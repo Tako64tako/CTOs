@@ -4,5 +4,5 @@
 機械学習で得た情報を元にあなたの体型や好み合わせた服をおすすめします.
 
 ## Licence 
-<a hf="https://github.com/Tako64tako/CTOs/blob/main/LICENSE">GNU General Public License v3.0</a>
+<a href="https://github.com/Tako64tako/CTOs/blob/main/LICENSE">GNU General Public License v3.0</a>
 
