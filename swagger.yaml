@@ -1,0 +1,28 @@
+swagger: "2.0"
+info:
+  description: "オンライン試着サービスに関するAPI"
+  version: "1.0.0"
+  title: "fit"
+tags:
+- name: "user"
+
+paths:
+  /user:
+    get:
+      tags:
+      - "user"
+      summary: "user情報を返す"
+      description: ""
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: 'response'
+          schema:
+            type: 'object'
+            properties:
+              status: 
+                type: 'string'
+                example: '200 OK'
