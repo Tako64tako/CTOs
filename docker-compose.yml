@@ -10,7 +10,7 @@ services:
    expose:
      - 8000
    env_file:
-     - .env.prod
+     - ./.env.dev
    depends_on:
      - db
 
@@ -19,43 +19,19 @@ services:
    volumes:
      - postgres_data:/var/lib/postgresql/data/
    env_file:
-     - .env.prod
+     - ./.env.dev
 
- nginx-proxy:
-   container_name: nginx-proxy
-   build: 
-     context: ./nginx
-     dockerfile: Dockerfile.prod
-   restart: always
-   ports:
-     - 443:443
-     - 80:80
+ nginx:
+   build: ./nginx
    volumes:
      - static_volume:/home/app/web/static
      - media_volume:/home/app/web/media
-     - certs:/etc/nginx/certs
-     - html:/usr/share/nginx/html
-     - vhost:/etc/nginx/vhost.d
-     - /var/run/docker.sock:/tmp/docker.sock:ro
+   ports:
+     - 1317:80
    depends_on:
      - web
-
- nginx-proxy-letsencrypt:
-   image: jrcs/letsencrypt-nginx-proxy-companion
-   env_file:
-     - .env.prod
-   volumes:
-     - /var/run/docker.sock:/var/run/docker.sock:ro
-     - certs:/etc/nginx/certs
-     - html:/usr/share/nginx/html
-     - vhost:/etc/nginx/vhost.d
-   depends_on:
-     - nginx-proxy
 
 volumes:
  postgres_data:
  static_volume:
  media_volume:
- certs:
- html:
- vhost:
