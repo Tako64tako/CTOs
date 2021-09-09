@@ -23,9 +23,7 @@ services:
 
  nginx-proxy:
    container_name: nginx-proxy
-   build: 
-     context: ./nginx
-     dockerfile: Dockerfile.prod
+   build: nginx
    restart: always
    ports:
      - 443:443
