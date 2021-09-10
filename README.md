@@ -6,7 +6,7 @@
 ## Requirements
 | 言語/FW | Version|
 | :------------| ---------: |
-| python | 3.8.3-alpine |
+| python | 3.8.3|
 
 ## Usage 
 At the first execution
