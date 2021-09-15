@@ -1,37 +1,45 @@
-version: "3.7"
-
-services:
- web:
-   build: ./django_project
-   command: gunicorn project.wsgi:application --bind 0.0.0.0:8000
-   volumes:
-     - static_volume:/home/app/web/static
-     - media_volume:/home/app/web/media
-   expose:
-     - 8000
-   env_file:
-     - ./.env.dev
-   depends_on:
-     - db
-
- db:
-   image: postgres:12.0-alpine
-   volumes:
-     - postgres_data:/var/lib/postgresql/data/
-   env_file:
-     - ./.env.dev
-
- nginx:
-   build: ./nginx
-   volumes:
-     - static_volume:/home/app/web/static
-     - media_volume:/home/app/web/media
-   ports:
-     - 1317:80
-   depends_on:
-     - web
+version: '3.7'
 
 volumes:
- postgres_data:
- static_volume:
- media_volume:
+  pgdata:
+    driver_opts:
+      type: none
+      device: $PWD/dbdata
+      o: bind
+services:
+  nginx:
+    image: nginx
+    container_name: container.nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./src/static:/static
+      - ./nginx/log:/var/log/nginx
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: container.uwsgi
+    command: uwsgi --ini /code/mainproject/django.ini
+    volumes:
+      - ./src:/code
+    expose:
+      - "8001"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    container_name: container.postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "postgresdb"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "test"
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    hostname: postgres
