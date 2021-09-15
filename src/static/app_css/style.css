@@ -1,0 +1,12 @@
+table {
+    background-color: #ffffff;
+    border-collapse:  collapse;     /* セルの線を重ねる */
+}
+th {
+    background-color: #000080;
+    color: #ffffff;                 /* 文字色指定 */
+}
+th, td {
+    border: solid 1px;              /* 枠線指定 */
+    padding: 10px;                  /* 余白指定 */
+}
