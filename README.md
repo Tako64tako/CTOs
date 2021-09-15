@@ -6,7 +6,7 @@
 ## Requirements
 | 言語/FW | Version|
 | :------------| ---------: |
-| python | 3.8.3|
+| python | 3.8.3　|
 
 ## Usage 
 At the first execution
@@ -23,7 +23,15 @@ build success
 
 http://localhost:1317/
 
-
+finish
+```sh
+$ docker-compose down
+```
+if error
+```sh
+$ docker-compose down --remove-orphans
+```
+ 
 ## Licence 
 <a href="https://github.com/Tako64tako/CTOs/blob/main/LICENSE">GNU General Public License v3.0</a>
 
