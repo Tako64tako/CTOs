@@ -21,7 +21,7 @@ $ docker-compose up -d --build
 ```
 build success
 
-http://localhost:1317/
+http://localhost:８０００/
 
 finish
 ```sh
