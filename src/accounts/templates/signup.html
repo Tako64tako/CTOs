@@ -1,0 +1,85 @@
+<!-- 静的ファイルのURLを生成するstaticタグをロードする -->
+{% load static %}
+<!doctype html>
+<!-- 言語指定をenからjaに変更 -->
+<html lang="ja" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+   
+    <title>Sign up</title>
+
+    <!-- <link rel="canonical" href="https://"～>の記述を削除 -->
+    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSSを読み込むコードをBootstrapからコピー -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+      <main>
+        <!-- Bootstrapのグリッドシステム -->
+        <hr>
+        <div class="container">
+          <!-- 行を配置 -->
+          <div class="row">
+            <!-- 列の左右に余白offset-2を入れる -->
+            <div class="col offset-2">
+              <h3>サインアップ</h3>
+              <!-- サインアップのフォームを配置 -->
+              <form method = "post">
+                {% csrf_token %}
+                <!-- formからフィールドを取り出す -->
+                {% for field in form %}
+                 <p>
+                   <!-- ラベルを出力 -->
+                   {{ field.label_tag }}<br>
+                   <!-- <input>タグを出力 -->
+                   {{ field }}
+                   <!-- help_textを出力 -->
+                   {% if field.help_text %}
+                     <small style="color: grey">{{ field.help_text }}</small>
+                   {% endif %}
+                   <!-- エラー発生時のテキストerrorsを出力 -->
+                   {% for error in field.errors %}
+                     <p style="color: red">{{ error }}</p>
+                   {% endfor %}
+                 </p>
+               {% endfor %}
+                <p style="color:red">
+                  ※メールアドレスはパスワードをリセットする際に必要になりますので、
+                  登録しておくことをお勧めします。
+                </p>
+                <!-- Sign upボタンを出力 -->
+                <input type="submit" value="Sign up">
+              </form>
+              <!-- トップページのリンクテキスト -->
+              <br>
+            </dv>
+          </dv>
+        </dv>
+      </main>
+  </body>
+      
+      
