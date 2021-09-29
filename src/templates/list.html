@@ -1,0 +1,31 @@
+{% load static %}
+
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'app_css/style.css' %}">
+  <link rel="shortcut icon" href="{% static 'pj_image/armx8-1ibhc-001.ico' %}" type="image/vnd.microsoft.icon">
+</head>
+<body>
+<table border="1">
+  <thead>
+    <tr>
+      <th>カフェ</th>
+      <th>特徴</th>
+      <th>エリア</th>
+      <th>サイト</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cafe in cafe_list %}
+    <tr>
+      <td><a href="{% url 'app:detail' cafe.id %}">{{ cafe.name }}</a></td>
+      <td>{{ cafe.memo }}</td>
+      <td>{{ cafe.area.name }}</td>
+      <td><a href="{{ cafe.website }}">{{ cafe.website }}</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
