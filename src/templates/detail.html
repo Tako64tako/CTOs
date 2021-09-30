@@ -1,0 +1,21 @@
+{% load static %}
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'app_css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'pj_image/armx8-1ibhc-001.ico' %}" type="image/vnd.microsoft.icon">
+</head>
+
+<body>
+    <h1>{{ cafe.name }}</h1>
+    <h2><img src="{% static 'app_image/' %}{{ cafe.image_path }}" alt="{{ cafe.name }}のイメージ"
+            title="{{ cafe.name }}のイメージ" width="384" height="384"></h2>
+    <h2>特徴：{{ cafe.memo }}</h2>
+    <h2>エリア：{{ cafe.area.name }}</h2>
+    <h2>サイト：<a href="{{ cafe.website }}">{{ cafe.website }}</a></h2>
+    <a href="{% url 'app:list' %}">戻る</a>
+</body>
+
+</html>
