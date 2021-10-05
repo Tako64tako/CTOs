@@ -34,7 +34,7 @@ services:
     restart: always
     container_name: container.postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: "postgresdb"
       POSTGRES_USER: "admin"
