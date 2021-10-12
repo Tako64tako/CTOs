@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %} <!-- settings.pyのstaticfileの設定を読み込む -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chat App</title>
+        <link rel="stylesheet" href="{% static "appcss/style.css" %}" type="text/css"><!-- STATIC_DIR/css/style.cssを読み込む -->
+    </head>
+    <body>
+        <div id="main_ele">
+            <h1>チャット</h1>
+            <div id="post_ele">
+                <div class="your_mes">
+                    <div class="cover">
+                        <a class="message">性別？</a>
+                    </div>
+                </div>
+                <!--
+                <div class="my_mes">
+                    <div class="cover"><a class="message">黒</a></div>
+                </div>
+                <div class="your_mes">
+                    <div class="cover"><a class="message">身長？</a></div>
+                </div>
+                <div class="my_mes">
+                    <div class="cover"><a class="message">170cm</a></div>
+                </div>
+                <div class="your_mes">
+                    <div class="cover"><a class="message">種類？</a></div>
+                </div>
+                <div class="my_mes">
+                    <div class="cover"><a class="message">ズボン</a></div>
+                </div>
+                -->
+            </div>
+            <form name="form1" action="" method="get" id="chat_form">
+                <!--<input type="text" name="text" id="chat_box">-->
+                <input type="radio" name="color1" value="男性" checked/> 男性
+                <input type="radio" name="color1" value="女性" /> 女性
+                <input type="submit" value="送信！" id="send_butt">
+            </form>
+        </div>
+        <!--
+        <h1>Hello this is index.html</h1>
+        <img src="{% static "app_images/test.png" %}" alt="testorig.jpg"><--STATIC_DIR/images/testorig.jpgを読み込む -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            send_customer_url = '{% url "app:customer" %}';//これはjsファイルの読み込みでdjangoのurlタグが解釈されないためあらかじめ変数として作っておく
+        </script>
+        <script src="{% static "app_script/script.js" %}"></script>
+    </body>
+</html>

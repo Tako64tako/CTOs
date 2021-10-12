@@ -1,0 +1,74 @@
+table {
+    background-color: #ffffff;
+    border-collapse:  collapse;     /* セルの線を重ねる */
+}
+th {
+    background-color: #000080;
+    color: #ffffff;                 /* 文字色指定 */
+}
+th, td {
+    border: solid 1px;              /* 枠線指定 */
+    padding: 10px;                  /* 余白指定 */
+}
+#main_ele{
+    display:inline-block;
+    height:550px;
+    width:100%;
+    border:1px solid black;
+    background-color:antiquewhite;
+}
+#post_ele{
+    display:inline-block;
+    height:360px;
+    width:100%;
+    border-bottom:1px solid grey;
+    padding-top:5px;
+    overflow-y: scroll;
+}
+#chat_form{
+    text-align: right;
+    margin-top: 5px;
+    margin-right:7px;
+}
+#chat_box{
+    vertical-align: top;
+    height:40px;
+    width:200px;
+    font-size: 20px;
+}
+#send_butt{
+    vertical-align: top;
+    height:47px;
+}
+h1{
+    text-align: center;
+    padding-bottom:15px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 1px;
+}
+.message{
+    /*background-color: white;*/
+    /*border-radius: 10px;
+    border:1px solid black;*/
+    font-size: 20px;
+}
+.your_mes{
+    margin-bottom: 5px;
+    margin-left:15px;
+    margin-right:15px;
+}
+.my_mes{
+    text-align: right;
+    margin-bottom: 5px;
+    margin-left:15px;
+    margin-right:15px;
+}
+.cover{
+    padding:0px 5px 0px 5px;
+    display:inline-block;
+    background-color: white;
+    border-radius: 10px;
+    border:1px solid black;
+    text-align: left;
+    max-width: 260px;
+}
