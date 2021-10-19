@@ -1,0 +1,9 @@
+<a href="/logout">ログアウト</a>
+<a href="/change_password">パスワードを変更する</a>
+
+<p>こんにちは、{{ user }}さん</p>
+<form action="/post_new_post" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="submit">
+</form>

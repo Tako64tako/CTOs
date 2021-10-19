@@ -1,0 +1,15 @@
+<p>こんにちは、{{ user }}さん</p>
+
+<h2>POSTS</h2>
+
+<a href="/logout">ログアウト</a>
+<a href="/change_password">パスワードを変更する</a>
+
+{% load static %}
+  <img src="{% static "coffee.jpg" %}">
+
+{% for post in posts %}
+    <img src = {% static post.file_path %}>
+    <p>{{ post.comment }}</p>
+    <p>{{ post.posted_at }}</p>
+{% endfor %}
