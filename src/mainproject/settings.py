@@ -53,6 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mainproject.urls'
 
+<<<<<<< HEAD
+=======
+TEMPLATE_DIR = os.path.join(BASE_DIR,'app/templates')
+>>>>>>> c0bc2812714a61889580abacc5f1f3f88658e39b
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,14 +82,20 @@ WSGI_APPLICATION = 'mainproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+<<<<<<< HEAD
         'NAME': 'postgresdb',
         'USER': 'admin',
         'PASSWORD': 'test',
         'HOST': 'postgres',
+=======
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+>>>>>>> c0bc2812714a61889580abacc5f1f3f88658e39b
         'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -125,7 +135,7 @@ USE_TZ = True
 
 # All applications can use Static files of this directory
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "mainproject/static/"),
+    os.path.join(BASE_DIR, "app/static/"),
 )
 
 # Collectstatic command put STATICFILES_DIRS and each application's Static files together into this directory
