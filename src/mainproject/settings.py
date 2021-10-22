@@ -53,11 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mainproject.urls'
 
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +81,7 @@ DATABASES = {
         'NAME': 'postgresdb',
         'USER': 'admin',
         'PASSWORD': 'test',
-        'HOST': 'db',
+        'HOST': 'postgres',
         'PORT': 5432,
     }
 }
@@ -139,3 +138,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
