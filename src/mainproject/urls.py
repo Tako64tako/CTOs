@@ -19,4 +19,7 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
+
+    # accounts.urlsへのURLパターンを追加
+    path('', include('accounts.urls')),
 ]
