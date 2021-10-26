@@ -25,6 +25,8 @@ urlpatterns = [
     # accounts.urlsへのURLパターンを追加
     path('', include('accounts.urls')),
 
+    path('', include('top.urls')),
+
     # パスワードリセットのためのURLパターン
     # PasswordResetConfirmViewがプロジェクトのurls.pyを参照するのでここに記載
     # パスワードリセット申し込みページ
