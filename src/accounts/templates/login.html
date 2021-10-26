@@ -1,0 +1,66 @@
+<!-- 静的ファイルのURLを生成するstaticタグをロードする -->
+{% load static %}
+<!doctype html>
+<!-- 言語指定をenからjaに変更 -->
+<html lang="ja" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Log in</title>
+  </head>
+
+  <body class="text-center">
+    <main class="form-signin">
+      <!-- ユーザー名とパスワードが一致しない場合のメッセージ -->
+      {% if form.errors %}
+        <p style="color: red">ユーザー名とパスワードが一致しません。</p>
+      {% endif %}
+
+      <!-- ログインのフォームを配置 -->
+      <form method="post">
+        {% csrf_token %}  
+        <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
+        <!-- Usernameのラベル(非表示) -->
+        <label for="Username" class="visually-hidden">
+          User name</label>
+        <!-- usernameの<input>タグを出力-->
+        <!-- name属性の値はLoginViewで定義されているフィールド名username -->
+        <input type="text"
+               name="username"
+               id="id_username"
+               maxlength="150"
+               autocapitalize="none"
+               autocomplete="username"
+               class="form-control"
+               placeholder="ユーザー名"
+               required autofocus>
+        <!-- Passwordのラベル(非表示) -->
+        <label for="Password" class="visually-hidden">
+          Password</label>
+        <!-- passwordの<input>タグを出力-->
+        <!-- name属性の値はLoginViewで定義されているフィールド名password -->
+        <input type="password"
+               name="password"
+               id="id_password"
+               autocomplete="current-password"
+               class="form-control"
+               placeholder="パスワード"
+               required>
+        <!-- <div class="checkbox mb-3">～</div>削除 -->
+        <!-- <button>～</button>を書き換えてログインボタンを配置 -->
+        <input class="w-100 btn btn-lg btn-primary"
+               type="submit" value="ログイン">
+        <!-- パスワードリセットページのリンクテキスト -->
+        <br><br>
+        <p><a href="{% url 'password_reset' %}">パスワードを忘れましたか?</a><p>
+        <!-- ログイン直後のリダイレクト先(トップページ)のURLパターンを設定 -->
+        <input type="hidden"
+               name="next"
+               value="#">
+      </form>
+    </main>
+  </body>
+</html>
