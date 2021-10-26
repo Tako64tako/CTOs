@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # accountsアプリを追加する
     'accounts.apps.AccountsConfig',
+    # topアプリを追加する
+    'top.apps.TopConfig'
 ]
 
 MIDDLEWARE = [
@@ -151,7 +153,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Gmailのアドレス、Gmailのアプリ用パスワードは
 # お使いのものを入力してください
 DEFAULT_FROM_EMAIL = 'xxxxxx@gmail.com'  # メールの送信元のアドレスを入力
-EMAIL_HOST = 'smtp.gmail.com'            # GmailのSMPTサーバー　　　
+EMAIL_HOST = 'smtp.gmail.com'            # GmailのSMPTサーバー
 EMAIL_PORT = 587                         # SMPTサーバーのポート番号
 EMAIL_HOST_USER = 'xxxxxx@gmail.com'     # Gmailのアドレスを入力
 EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxxxxxx' # Gmailのアプリ用パスワードを入力
