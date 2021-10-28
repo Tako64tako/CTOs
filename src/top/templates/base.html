@@ -1,46 +1,20 @@
-    <!DOCTYPE html>
-    {% load static %}
-    <!-- settings.pyのstaticfileの設定を読み込む -->
-    <html>
-    
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Online try on Service</title>
-        <link rel="stylesheet" href="{% static  appcss/index.css" %}" type="text/css">
-        <!-- STATIC_DIR/css/style.cssを読み込む -->
         <title>{% block title %}{% endblock %}</title>
-    </header>
+        <link href="{% static 'appcss/bootstrap.min.css' %}" rel="stylesheet">
+        {% block head %}{% endblock %}
+    </head>
     <body>
-        <header>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        
-            <nav class="globalMenuSp">
-                <ul>
-                    <li><a href="#">一覧</a></li>
-                    <li><a href="#">お気に入り</a></li>
-                    <li><a href="#">履歴</a></li>
-                    <li><a href="#">F&Q</a></li>
-                    <li><a href="#">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- メインコンテンツ -->
-        <main>
-            <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
-            {% block contents %}{% endblock %}
-        </main>/header>
-        
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script>
-            send_customer_url = '{% url "app:customer" %}';//これはjsファイルの読み込みでdjangoのurlタグが解釈されないためあらかじめ変数として作っておく
-        </script>
-        <script src="{% static " app_script/index.js" %}"></script>
+        {% include 'header.html' %}
+        {% block contents %}{% endblock %}
+        {% block footer %}{% endblock %}
+        <script src="{% static 'appjs/bootstrap.bundle.min.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
-    
-    </html>
+
+</html>
