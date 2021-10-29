@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # accountsアプリを追加する
     'accounts.apps.AccountsConfig',
     # topアプリを追加する
-    'top.apps.TopConfig'
+    'top.apps.TopConfig',
+    'bootstrap4',   # django-bootstrap4
 ]
 
 MIDDLEWARE = [
