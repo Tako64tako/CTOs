@@ -5,10 +5,13 @@
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %}</title>
         <link href="{% static 'appcss/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'appcss/footer.css' %}" rel="stylesheet">
         {% block head %}{% endblock %}
     </head>
     <body>
         {% include 'header.html' %}
+        {% include 'body.html' %}
+        {% include 'footer.html' %}
         {% block contents %}{% endblock %}
         {% block footer %}{% endblock %}
         <script src="{% static 'appjs/bootstrap.bundle.min.js' %}"></script>
