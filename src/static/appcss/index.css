@@ -1,132 +1,106 @@
-/*　ハンバーガーボタン */
-.hamburger {
-  display : block;
-  position: fixed;
-  z-index : 3;
-  right : 32px;
-  top   : 32px;
-  width : 42px;
-  height: 42px;
-  cursor: pointer;
-  text-align: center;
-  
-}
-.hamburger span {
-  display : block;
-  position: absolute;
-  width   : 30px;
-  height  : 2px ;
-  left    : 6px;
-  background : #555;
-  -webkit-transition: 0.5s all;
-  -moz-transition   : 0.5s all;
-  transition        : 0.5s all;
-}
-.hamburger span:nth-child(1) {
-  top: 10px;
-}
-.hamburger span:nth-child(2) {
-  top: 20px;
-}
-.hamburger span:nth-child(3) {
-  top: 30px;
+@charset "utf-8";
+* {
+   box-sizing: border-box;
 }
 
-/* ナビ開いてる時のボタン */
-
-.hamburger.active span:nth-child(1) {
-  top : 16px;
-  left: 6px;
-  width: 24px;
-    background : #fff;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform   : rotate(-45deg);
-  transform        : rotate(-45deg);
-}
-.hamburger.active span:nth-child(2) {
-  left: 60%;
-  opacity: 0;
-  -webkit-animation: active-btn17-bar02 .8s forwards;
-  animation: active-hamburger-bar02 .8s forwards;
-}
-@-webkit-keyframes active-hamburger-bar02 {
-  100% {
-    height: 0;
-  }
-}
-@keyframes active-hamburger-bar02 {
-  100% {
-    height: 0;
-  }
-}
-.hamburger.active span:nth-child(3) {
-  top: 16px;
-  width: 24px;
-  background : #fff;
-  -webkit-transform: rotate(45deg);
-  -moz-transform   : rotate(45deg);
-  transform        : rotate(45deg);
+html {
+    height: 100%;
+    background-image: url("../app_images/charles-etoroma-k78R0lDxd48-unsplash.jpg"); 
+    background-size: cover;               
+    background-attachment: fixed;        
+    background-position: center center;
 }
 
-
-.hamburger::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  content: '';
-  width: 52px;
-  height: 52px;
-  margin: -32px 0 0 -32px;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0);
-  transition: all .75s;
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
-.hamburger.active::after {
-  border: 2px solid #fff;
+header {
+   padding: 15px 12% 10px;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: transparent;
+   display: flex;
+   align-items: center;
 }
 
-nav.globalMenuSp {
-  position: fixed;
-  z-index : 2;
-  top  : 0;
-  left : 0;
-  color: #fff;
-  background: rgba(0,0,0,0.7);
-  text-align: center;
-  width: 100%;
-  opacity: 0;
-  transition: opacity .6s ease, visibility .6s ease;
+h1 {
+   margin: 0; 
+   padding: 0;
+   font-family: 'Dancing Script', cursive;
+   font-style: normal;
+   font-weight: normal;
+   font-size: calc(30px + 3vw);
+}
+.header_subtitle {
+    display: inline-block;
+    margin-left: 7px;
+    position: relative;
+    top: -20%;
+    font-family: Poiret One;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
 }
 
-nav.globalMenuSp ul {
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
+a {	
+   display: inline-block;
+   text-decoration: none;
+   color: rgb(0, 0, 0);
+}
+nav {
+   margin: 10px 0 0 auto;
 }
 
-nav.globalMenuSp ul li {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-  transition: .4s all;
+ul {
+   list-style: none;
+   margin: 0;
+   display: flex;
 }
-nav.globalMenuSp ul li:last-child {
-  padding-bottom: 0;
-}
-nav.globalMenuSp ul li:hover{
-  background :#ddd;
+li {
+   margin: 0 0 0 0px;
+   font-size: 20px;
 }
 
-nav.globalMenuSp ul li a {
-  display: block;
-  color: #fff;
-  padding: 1em 0;
-  text-decoration :none;
+.search_form {
+    border-right: 1px dotted #313030;
+    margin-right: 25px;
+    padding-right: 25px;
+    position: relative;
+    text-align: center;
 }
 
-/* このクラスを、jQueryで付与・削除する */
-nav.globalMenuSp.active {
-  opacity: 100;
-
+::placeholder {
+    color: #3b3a3a;
 }
+
+.search_input {
+    width: 250px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #313030;
+    line-height: 16px;
+    padding-bottom: 3px;
+    outline: none;
+}
+.fa-search {
+    bottom: 8px;
+    fill: none;
+    position: absolute;
+    right: 32px;
+    stroke: #909090;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+
+
+

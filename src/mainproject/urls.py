@@ -25,6 +25,7 @@ urlpatterns = [
     # accounts.urlsへのURLパターンを追加
     path('', include('accounts.urls')),
 
+    # topページ
     path('', include('top.urls')),
 
     # パスワードリセットのためのURLパターン
