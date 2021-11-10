@@ -1,5 +1,20 @@
-<ul>
-    {% for person in object_list %}
-    <li>Name: {{ person.name }}, Age: {{ person.age }}</li>
-    {% endfor %}
-</ul>
+{% extens 'index.html' %} {% block content %}
+<div class="form-group">
+    <table class="table table-hover">
+        <thead>
+            <tr class = "tabel-primary">
+                <th>{{index}}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for iten in lists %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td><button class="btn-primary">select</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
