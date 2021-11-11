@@ -9,9 +9,6 @@ class IndexView(TemplateView):
 
 def list_cloth(request):
     clother = Cloth.objects.all()
-    context = {
-        'index':"CLOTH",
-        'clothers':clother
-    }
-    return render(request,'top/templates/list.html',context)
+    return render(request,'list.html',{'cloth':clother})
+
 

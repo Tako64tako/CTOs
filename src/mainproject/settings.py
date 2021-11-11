@@ -139,6 +139,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Django template files read this directory to use Static files(example {% static 'style.css' %})
 STATIC_URL = '/static/'
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

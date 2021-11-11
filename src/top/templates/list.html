@@ -1,20 +1,13 @@
-{% extens 'index.html' %} {% block content %}
-<div class="form-group">
-    <table class="table table-hover">
-        <thead>
-            <tr class = "tabel-primary">
-                <th>{{index}}</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for iten in lists %}
-            <tr>
-                <td>{{item.name}}</td>
-                <td><button class="btn-primary">select</button></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-{% endblock %}
+{% if cloth %}
+<ul>
+    {% for item in cloth %}
+    <li>{{ item.name }}</li>
+    <li>{{ item.color }}</li>
+    <li>{{ item.kind }}</li>
+    <li>{{ item.number }}</li>
+    <li>{{ item.size }}</li>
+    <li>{{ item.pictures }}</li>
+    <img src="{{item.img.url}}">
+    {% endfor %}
+</ul>
+{% endif %}
