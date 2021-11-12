@@ -5,7 +5,7 @@
 
 html {
     height: 100%;
-    background-image: url("../app_images/charles-etoroma-k78R0lDxd48-unsplash.jpg"); 
+    background-image: url("../app_images/charles-etoroma-k78R0lDxd48-unsplash.jpg");
     background-size: cover;               
     background-attachment: fixed;        
     background-position: center center;
@@ -99,6 +99,18 @@ li {
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+main {
+    height: 100%;
+}
+
+.img {
+    height: 100px;
+    width: 50px;
+    position:relative;
+    top:30%;
+    left: 50%;
 }
 
 
