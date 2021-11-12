@@ -19,7 +19,7 @@ class Cloth(models.Model):
     #写真のURL
     pictures = models.URLField()
 
-
+    img = models.ImageField(upload_to="image/", blank=True, null=True)
     def __str__(self):
         return self.name
 

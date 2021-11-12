@@ -18,6 +18,9 @@ from django.urls import include, path
 # auth.viewsをインポートしてauth_viewという記名で利用する
 from django.contrib.auth import views as auth_views
 
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
@@ -54,3 +57,6 @@ urlpatterns = [
            template_name = "password_reset_done.html"),
          name ='password_reset_complete'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,18 @@
-<ul>
-    {% for person in object_list %}
-    <li>Name: {{ person.name }}, Age: {{ person.age }}</li>
-    {% endfor %}
-</ul>
+{% load static %}
+<link rel="stylesheet" href={% static "appcss/card.css" %}>
+
+{% if cloth %}
+{% for item in cloth %}
+<section class="card">
+    <img class="card-img" src="{{item.img.url}}" alt="">
+    <div class="card-title">
+        <h1 class="card-title">{{item.name}}</h1>
+        <p class="card-text">{{item.kind}}</p>
+    </div>
+    <div class="card-link">
+        <a href="{{item.pictures}}">About</a>
+        <a href="{{item.pictures}}">Website</a>
+    </div>
+</section>
+{% endfor %}
+{% endif %}
