@@ -1,13 +1,18 @@
+{% load static %}
+    <link rel="stylesheet" href={% static "appcss/card.css" %}>
+
 {% if cloth %}
-<ul>
     {% for item in cloth %}
-    <li>{{ item.name }}</li>
-    <li>{{ item.color }}</li>
-    <li>{{ item.kind }}</li>
-    <li>{{ item.number }}</li>
-    <li>{{ item.size }}</li>
-    <li>{{ item.pictures }}</li>
-    <img src="{{item.img.url}}">
+    <section class="card">
+        <img class="card-img" src="{{item.img.url}}" alt="">
+        <div class="card-title">
+            <h1 class="card-title">{{item.name}}</h1>
+            <p class="card-text">{{item.kind}}</p>
+        </div>
+        <div class="card-link">
+            <a href="{{item.pictures}}">About</a>
+            <a href="{{item.pictures}}">Website</a>
+        </div>
+    </section>
     {% endfor %}
-</ul>
 {% endif %}
