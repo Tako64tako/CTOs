@@ -2,4 +2,3 @@ Django
 django-bootstrap4
 uwsgi
 psycopg2
-Pillow

@@ -11,3 +11,4 @@ def list_cloth(request):
     clother = Cloth.objects.all()
     return render(request,'list.html',{'cloth':clother})
 
+

@@ -17,8 +17,6 @@
       <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
       <link rel="stylesheet" href={% static "appcss/index.css" %}>
-      <link rel="stylesheet" href={% static "appcss/card.css" %}>
-
    </head>
    <body>
       <header>
@@ -41,7 +39,7 @@
    <!-- メインコンテンツ -->
    <main>
       <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
-      
+      {% include 'list.html' %}
       {% block contents %}{% endblock %}
    </main>
 </html>

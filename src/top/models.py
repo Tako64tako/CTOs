@@ -11,12 +11,12 @@ class Cloth(models.Model):
     # 性別 : 文字列30桁
     gender = models.CharField(max_length=30)
     # 種類 : 文字列30桁
-    kind = models.CharField(max_length=80)
+    kind = models.CharField(max_length=30)
     # サイズ : 文字列30桁
     size = models.CharField(max_length=30)
     # 色 : 文字列30桁
     color = models.CharField(max_length=30)
-    #画像の追加
+    
     img = models.ImageField(upload_to="image/", blank=True, null=True)
 
     #写真のURL
