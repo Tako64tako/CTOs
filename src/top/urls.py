@@ -4,5 +4,6 @@ from . import views
 
 app_name = 'top'
 urlpatterns = [
-    path("", views.IndexView.as_view(), name='index')
+    path("", views.IndexView.as_view(), name='index'),
+    path('clother/',views.list_cloth,name='list_cloth')
 ]

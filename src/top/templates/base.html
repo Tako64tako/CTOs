@@ -2,45 +2,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ヘッダー情報のタイトルを個別に設定できるようにする -->
-        <title>{% block title %}{% endblock %}</title>
-        
-        <!-- アイコン、フォントの読み込み -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- ヘッダー情報のタイトルを個別に設定できるようにする -->
+      <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" href={% static "appcss/index.css" %}>
-    </head>
-    <body>
-        <header>
-           <h1>
-              <a href="/">CTOs<span class="header_subtitle">customer <div>try on service</div></span></a>
-           </h1>
-           <nav class="pc-nav">
-              <ul>
-                <li class="search_box">
-                    <form class="search_form" action="#" method="get" autocomplete="off">
+      <!-- アイコン、フォントの読み込み -->
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+      <link rel="stylesheet" href={% static "appcss/index.css" %}>
+   </head>
+   <body>
+      <header>
+         <h1>
+            <a href="/">CTOs<span class="header_subtitle">customer <div>try on service</div></span></a>
+         </h1>
+         <nav class="pc-nav">
+            <ul>
+               <li class="search_box">
+                  <form class="search_form" action="#" method="get" autocomplete="off">
                         <input class="search_input" placeholder="search here"  type="search" name="q">
                         <input class="search_btn fas fa-search" type="submit" value="&#xf002;">
-                    </form>
-                </li>
-                 <li><a href="{% url 'accounts:login' %}"><i class="fas fa-user-alt"></i></a></li>
-              </ul>
-           </nav>
-        </header>
-     </body>
-     <!-- メインコンテンツ -->
-     <main>
-        <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
-        {% block contents %}{% endblock %}
-     </main>
+                  </form>
+               </li>
+               <li><a href="{% url 'accounts:login' %}"><i class="fas fa-user-alt"></i></a></li>
+            </ul>
+         </nav>
+      </header>
+   </body>
+   <!-- メインコンテンツ -->
+   <main>
+      <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む -->
+      {% include 'list.html' %}
+      {% block contents %}{% endblock %}
+   </main>
 </html>
-                      
-             
