@@ -1,5 +1,13 @@
+{% if cloth %}
 <ul>
-    {% for person in object_list %}
-    <li>Name: {{ person.name }}, Age: {{ person.age }}</li>
+    {% for item in cloth %}
+    <li>{{ item.name }}</li>
+    <li>{{ item.color }}</li>
+    <li>{{ item.kind }}</li>
+    <li>{{ item.number }}</li>
+    <li>{{ item.size }}</li>
+    <li>{{ item.pictures }}</li>
+    <img src="{{item.img.url}}">
     {% endfor %}
 </ul>
+{% endif %}
