@@ -19,7 +19,7 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', include('app.urls')),
+    path('app', include('app.urls')),
     path('admin/', admin.site.urls),
 
     # accounts.urlsへのURLパターンを追加
@@ -53,4 +53,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
            template_name = "password_reset_done.html"),
          name ='password_reset_complete'),
+    
+    # dress.urlsへのURLパターンを追加
+    path('dress/', include('DressApp.urls')),
 ]

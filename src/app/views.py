@@ -7,8 +7,8 @@ from django.views import generic
 
 #クライアントにHTMLデータを渡す
 def index(request):
-    #return HttpResponse("Hello World")
-    return render(request, 'chat.html')
+    return HttpResponse("Hello World")
+    #return render(request, 'chat.html')
 
 #顧客の情報を受け取り、メッセージを返す
 def send_customer(request):
