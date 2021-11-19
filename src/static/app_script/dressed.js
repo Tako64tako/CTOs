@@ -1,3 +1,36 @@
+//CSRFトークンの処理
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+
 const dress_back = document.getElementById("dres_back");
 let dress_back_x = dress_back.clientWidth;
 console.log(dress_back_x);
@@ -5,8 +38,11 @@ const sub_right = document.getElementById("sub_right");
 const sub_left = document.getElementById("sub_left");
 let sub_left_x = sub_left.clientWidth;
 
+
 sub_right.scrollTop = sub_right.scrollHeight;
 
+//左側背景のウィンドウサイズリサイズ時に動作する処理内容
+//具体的にはウィンドウサイズが796を超えたとき、左側背景画像のwidthをウィンドウwidthによって決まる値にする
 function resizeWindow(){
     sW = window.innerWidth;
     sub_left_x = sub_left.clientWidth;
@@ -20,15 +56,17 @@ function resizeWindow(){
     }
 
 }
-//ウィンドウサイズを変えると実行される
+//ウィンドウサイズリサイズ時に動作させる処理を登録
 window.addEventListener('resize',resizeWindow);
+//ウィンドウサイズリサイズ時に動作させる処理の実行
 resizeWindow();//実行時にウィンドウサイズから要素のwidthを設定する
+
 
 const icons = document.getElementsByClassName("icon");
 let human_icon_flag = 0;
 const asset_form = document.getElementById("asset_form");
 const black_mask = document.getElementById("black_mask");
-
+//暗くなった画面を明るくするための関数
 function black_mask_hide(){
     if(black_mask.className != "hide_flag"){
         asset_form.className = "hide_flag";
@@ -36,6 +74,8 @@ function black_mask_hide(){
         human_icon_flag = 0
     }
 }
+
+//右上の人物アイコンをクリックした時の関数
 icons[0].addEventListener("click",function(){
     if(human_icon_flag==0){
         black_mask.addEventListener("mousedown",black_mask_hide);
@@ -52,12 +92,14 @@ icons[0].addEventListener("click",function(){
 
 const human_plus_icon = document.getElementById("human_plus_icon");
 const file_form = document.getElementById("file_form");
+//右上人物アイコンをクリックすると現れるフレーム内の左側のアイコンをクリックした時に動作させる関数
 human_plus_icon.addEventListener("click",function(){
     black_mask.removeEventListener("mousedown",black_mask_hide);
     file_form.className = "visible_flag"
 });
 
 const kyanseru = document.getElementsByClassName("kyanseru");
+//左側アイコンをクリックすると現れるフレームのキャンセルボタンをクリックした時に動作させる関数
 kyanseru[0].addEventListener("click",function(){
     file_form.className = "hide_flag"
     asset_form.className = "hide_flag";
@@ -66,6 +108,7 @@ kyanseru[0].addEventListener("click",function(){
 })
 
 const file_road_form = document.getElementById("uploadfile");
+//ファイルを選択したときにフォームに画像を表示させる処理(アップロードではない)
 function fileChange(ev) {
     var target = ev.target;
     var file = target.files[0];
@@ -103,10 +146,11 @@ function fileChange(ev) {
 }
 file_road_form.addEventListener("change", fileChange, false);
 
+
 const cambus_form = document.getElementById("cambus_form")
 const cambus = document.getElementById("cambus")
-
-  $('#ajax-file-send').on('submit', function(e) {
+//画像ファイルを選択し、次へボタンを押したときajaxで画像ファイルを格納したDataFormを送信する関数を登録
+$('#ajax-file-send').on('submit', function(e) {
     e.preventDefault();
     var fd = new FormData($("#ajax-file-send").get(0));
     for (let value of fd.entries()) { 
