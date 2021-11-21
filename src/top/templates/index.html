@@ -5,9 +5,10 @@
 {% block title %}Online Try On Service{% endblock %}
 
       {% block contents %}
-      <div class="img">
+      <ul class="slider">
             {% for record in garment_records %}
-            <img src="{{record.pictures}}">
+            <li><img src="{{record.pictures}}" alt=""></li>
             {% endfor %}
-      </div>
+      </ul>
+      
       {% endblock %}

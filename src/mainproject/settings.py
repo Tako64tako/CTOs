@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # topアプリを追加する
     'top.apps.TopConfig',
     'bootstrap4',   # django-bootstrap4
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Django template files read this directory to use Static files(example {% static 'style.css' %})
 STATIC_URL = '/static/'
+
+# 画像を保存する先の指定
+MEDIA＿ROOT = os.path.join(BASE_DIR, 'garment_images')
+
+# 画像をdjango側で読み込むための設定
+MEDIA_URL = '/garment_images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Cloth(models.Model):
     # 商品番号 : INTEGR型で、主キー

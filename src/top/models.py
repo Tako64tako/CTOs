@@ -1,7 +1,11 @@
 from django.db import models
+import uuid
+
 
 # Create your models here.
 
+def image_directory_path(instance, filename):
+    return 'images/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
 
 class Cloth(models.Model):
     # 商品番号 : INTEGR型で、主キー
@@ -18,6 +22,8 @@ class Cloth(models.Model):
     color = models.CharField(max_length=30)
     #写真のURL
     pictures = models.URLField()
+
+    image = models.ImageField(upload_to=image_directory_path)
 
 
     def __str__(self):
