@@ -2,4 +2,11 @@ Django
 django-bootstrap4
 uwsgi
 psycopg2
+numpy
 Pillow
+matplotlib
+opencv-python
+mxnet
+gluoncv
+scipy
+scikit-image

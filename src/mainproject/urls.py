@@ -22,7 +22,7 @@ from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', include('app.urls')),
+    path('app', include('app.urls')),
     path('admin/', admin.site.urls),
 
     # accounts.urlsへのURLパターンを追加
@@ -56,6 +56,9 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(
            template_name = "password_reset_done.html"),
          name ='password_reset_complete'),
+    
+    # dress.urlsへのURLパターンを追加
+    path('dress/', include('DressApp.urls')),
 ]
 
 

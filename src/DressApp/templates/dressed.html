@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %} <!-- settings.pyのstaticfileの設定を読み込む -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dressed</title>
+        <link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (min-width:376px)">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (max-width:375px)">
+    </head>
+    <body>
+        <div id="main_frame">
+            <div id="sub_frame">
+                <div id="sub_left">
+                    <img src="{% static "app_images/dress_img/dress2.jpeg" %}" alt="no_img" id="dres_back">
+                    <img src="{% static "app_images/dress_img/3_40_haikei.png" %}" alt="no_img" id="user_img">
+                    <div class="icon">
+                        <img src="{% static "app_images/dress_img/human.png" %}" alt="no_img" id="human_icon">
+                    </div>
+                </div>
+                <div id="sub_right">
+                    <div class="model"></div>
+                    <div class="model"></div>
+                    <div class="model"></div>
+                    <div class="model"></div>
+                    <div class="model_have">
+                        <img src="{% static "app_images/dress_img/model_2.jpeg" %}" alt="no_img" class="model_img">
+                    </div>
+                    <div class="model_have">
+                        <img src="{% static "app_images/dress_img/model_0.jpeg" %}" alt="no_img" class="model_img">
+                    </div>
+                    <div class="model_have" id="down">
+                        <img src="{% static "app_images/dress_img/model_1.jpeg" %}" alt="no_img" class="model_img">
+                    </div>
+                </div>
+            </div>
+            <div id="asset_form" class="hide_flag">
+                <div class="avater_icon">
+                    <img src="{% static "app_images/dress_img/human_plus.png" %}" id="human_plus_icon">
+                    <div class="avater_text">
+                        New avater
+                    </div>
+                </div>
+                <div class="avater_icon">
+                    <img src="{% static "app_images/dress_img/human_already.png" %}" alt="no_img" id="human_already_icon">
+                    <div class="avater_text">
+                        Avaters
+                    </div>
+                </div>
+
+                <div id="file_form" class="hide_flag">
+                    <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>
+                        <p><input type="submit" name="submit"></p>
+                    </form>
+                    <!--
+                    <input type="file" id="file_road_form">
+                    <br>
+                    <button id="send_next_butt">次へ</button>-->
+                    <div id="file_look">
+
+                    </div>
+                    <button class="kyanseru">キャンセル</button>
+                </div>
+                <!--
+                <div id="cambus_form" class="hide_flag">
+                    <div id="pointting_command_text">肩</div>
+                    <div id="cambus">
+                    </div>
+                    <button id="point_next_but">次</button>
+                </div>-->
+            </div>
+            <div id="black_pocket">
+                <div id="black_mask" class="hide_flag">
+                </div>
+            </div>
+            <div id="setting_frame"></div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            ajax_file_url = '{% url "DressApp:ajax_file_send" %}';//これはjsファイルの読み込みでdjangoのurlタグが解釈されないためあらかじめ変数として作っておく
+        </script>
+        <script src="{% static "app_script/dressed.js" %}"></script>
+    </body>
+</html>
