@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 # auth.viewsをインポートしてauth_viewという記名で利用する
 from django.contrib.auth import views as auth_views
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('app', include('app.urls')),
@@ -57,3 +60,7 @@ urlpatterns = [
     # dress.urlsへのURLパターンを追加
     path('dress/', include('DressApp.urls')),
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

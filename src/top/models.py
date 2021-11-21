@@ -1,7 +1,7 @@
 from django.db import models
-
+import uuid
+import os
 # Create your models here.
-
 
 class Cloth(models.Model):
     # 商品番号 : INTEGR型で、主キー
@@ -16,10 +16,11 @@ class Cloth(models.Model):
     size = models.CharField(max_length=30)
     # 色 : 文字列30桁
     color = models.CharField(max_length=30)
+    
+    img = models.ImageField(upload_to="image/", blank=True, null=True)
+
     #写真のURL
     pictures = models.URLField()
-
-
     def __str__(self):
         return self.name
 

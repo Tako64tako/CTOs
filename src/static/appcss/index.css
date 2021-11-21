@@ -5,7 +5,7 @@
 
 html {
     height: 100%;
-    background-image: url("../app_images/charles-etoroma-k78R0lDxd48-unsplash.jpg"); 
+    /* background-image: url("../app_images/charles-etoroma-k78R0lDxd48-unsplash.jpg"); */
     background-size: cover;               
     background-attachment: fixed;        
     background-position: center center;
@@ -43,6 +43,13 @@ h1 {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
+}
+
+@media screen and (max-width:780px) { 
+    /*　画面サイズが780pxからはここを読み込む　*/
+.header_subtitle {
+    display: none;
+}
 }
 
 a {	
@@ -100,6 +107,59 @@ li {
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
+main {
+    height: 100%;
+}
+
+.img {
+    height: 100px;
+    width: 50px;
+    position:relative;
+    top:30%;
+    left: 50%;
+}
+
+/* .slick-prev:before,
+.slick-next:before {
+  color: #000 !important;
+}
+
+.center-mode p {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 100px;
+  color: #666;
+  margin: 15px, auto, 15px, auto;
+  text-align: center;
+  background-color: #e0e0e0;
+  opacity: 0.4;
+  transition: all 300ms ease;
+}
+
+.center-mode p.slick-center {
+  color: #f50057;
+  opacity: 1;
+  transform: scale(1.50);
+}
+
+.sliderArea {
+    max-width: 100%;
+    margin: 0px auto;
+    padding: 0 50px;
+  }
+ .sliderArea.w300 {
+    max-width: 300px;
+  } 
+
+.slick-slide {
+    width:100%;
+    max-width:220px;
+    height: 360px;
+} */
+
+
+
 
 
 

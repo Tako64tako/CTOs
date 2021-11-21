@@ -1,8 +1,13 @@
 <!-- ベーステンプレートを適用する -->
 {% extends 'base.html' %}
+{% load static %}
 <!-- ヘッダー情報のページタイトルを設定する -->
 {% block title %}Online Try On Service{% endblock %}
 
       {% block contents %}
-
+      <div class="img">
+            {% for record in garment_records %}
+            <img src="{{record.pictures}}">
+            {% endfor %}
+      </div>
       {% endblock %}

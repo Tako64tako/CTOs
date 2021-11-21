@@ -3,7 +3,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
+from .models import Cloth
 
 #クライアントにHTMLデータを渡す
 def index(request):
@@ -11,12 +11,12 @@ def index(request):
     #return render(request, 'chat.html')
 
 #顧客の情報を受け取り、メッセージを返す
-def send_customer(request):
-    gender = request.POST.get('gender')
-    height = request.POST.get('height')
-    type = request.POST.get('type')
-    color = request.POST.get('color')
-    d={
-        "chat":"データを送信しました",
+def send_clother(request):
+    clother = Cloth.objects.all()
+    context = {
+        'index': "CLOTH",
+        'clothers': clother
     }
-    return JsonResponse(d)
+    return render(request, 'list.html', context)
+
+
