@@ -7,7 +7,9 @@
       {% block contents %}
       <ul class="slider">
             {% for record in garment_records %}
-            <li><img src="{{record.pictures}}" alt=""></li>
+            <div class="img_back">
+                  <li><img src="{{record.picture.large.url}}" alt=""></li>
+            </div>
             {% endfor %}
       </ul>
       

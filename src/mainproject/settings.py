@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     # topアプリを追加する
     'top.apps.TopConfig',
     'bootstrap4',   # django-bootstrap4
-    'django_cleanup.apps.CleanupConfig',
+    'django_cleanup',
+    'imagekit',
+    'stdimage', 
 ]
 
 MIDDLEWARE = [
