@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     # topアプリを追加する
     'top.apps.TopConfig',
     'bootstrap4',   # django-bootstrap4
+    # dressアプリを追加する
+    'DressApp',
 ]
 
 MIDDLEWARE = [
@@ -58,11 +60,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mainproject.urls'
 
-TEMPLATE_DIR = os.path.join(BASE_DIR,'app/templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'app/templates')#これいらないかも
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR],#そしたらここも[]でいいかも
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,6 +133,7 @@ USE_TZ = True
 # All applications can use Static files of this directory
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "app/static/"),
+    os.path.join(BASE_DIR, "DressApp/static/"),
 )
 
 # Collectstatic command put STATICFILES_DIRS and each application's Static files together into this directory
