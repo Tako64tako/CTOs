@@ -2,7 +2,6 @@ Django
 django-bootstrap4
 uwsgi
 psycopg2
-django-imagekit
 pillow
 django-cleanup
 django-stdimage

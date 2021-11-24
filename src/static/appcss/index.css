@@ -126,7 +126,7 @@ main {
 スライダーのためのcss
 ===================================*/
 .slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
-    width:94%;
+    width:90%;
     margin: 0 auto;
     padding-top: 40px;
 }
@@ -136,32 +136,89 @@ main {
 }
 
 .slider .img_back {
-    aspect-ratio: 4/5;
+    aspect-ratio: 5/7;
     background-color:white;
-    margin: 0 -15px 0 -15px;
+    margin: 0 -20px 0 -20px;
     box-shadow: 15px 15px 30px rgb(82, 80, 80);
 }
 
 .slider img {
     width: 35vw;
-    object-fit:scale-down;  
+    max-width: 350px;
+    object-fit: cover;  
 }
 
 .slider .slick-slide {
-  transform: scale(0.7);/*左右の画像のサイズを80%に*/
+  transform: scale(0.6);/*左右の画像のサイズを80%に*/
   transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
-  opacity: 0.6;/*透過50%*/
+  opacity: 0.7;/*透過50%*/
 }
 
 .slider .slick-slide.slick-center{
-  transform: scale(1.00);/*中央の画像のサイズだけ等倍に*/
+  transform: scale(0.80);/*中央の画像のサイズだけ等倍に*/
   opacity: 1;/*透過なし*/
   position: relative;
   bottom: 20px;
 }
 
 .slider li {
-    margin-top: 20px;
+    margin-top: 10%;
+}
+
+/* オンライン試着とwebsiteへのリンク */
+
+.img_back li{ 
+    height: 93%;
+    overflow: hidden;
+    position: relative;
+}
+
+.img_back li span {
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    margin-top: 1rem;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.img_back li span a {
+    display: block;
+    font-size: 22px;
+    margin: 12px 0px
+}
+
+.image_link {
+	padding: 0.1em 0.3em;
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #000000;
+}
+
+.tryon_link {
+    background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgb(173, 10, 10) 60%);
+}
+
+.website_link {
+    background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgb(201, 46, 7) 60%);
+}
+
+.image_link:hover {
+	background-position: -100% 0;
+	color: rgb(163, 159, 159);
+}
+
+@media (hover: hover) {
+    .img_back li span {
+      transform: translateY(100px);
+      transition: 0.2s;
+    }
+    .img_back:hover span {
+      transform: translateY(0);
+    }
 }
 
 /*矢印の設定*/
@@ -176,19 +233,19 @@ main {
 .slick-next {
     cursor: pointer;/*マウスカーソルを指マークに*/
     outline: none;/*クリックをしたら出てくる枠線を消す*/
-    border-top: 2px solid #666;/*矢印の色*/
-    border-right: 2px solid #666;/*矢印の色*/
+    border-top: 4px solid rgb(51, 49, 49);/*矢印の色*/
+    border-right: 4px solid rgb(51, 49, 49);/*矢印の色*/
     height: 15px;
     width: 15px;
 }
 
 .slick-prev {/*戻る矢印の位置と形状*/
-    left: 0%;
+    left: 2%;
     transform: rotate(-135deg);
 }
 
 .slick-next {/*次へ矢印の位置と形状*/
-    right: 0%;
+    right: 2%;
     transform: rotate(45deg);
 }
 
@@ -197,7 +254,7 @@ main {
 .slick-dots {
     text-align:center;
     position:absolute;
-    bottom: -50px;
+    bottom: 0px;
 }
 
 .slick-dots li {
