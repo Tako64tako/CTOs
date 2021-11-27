@@ -6,7 +6,6 @@ numpy
 Pillow
 matplotlib
 opencv-python
-mxnet
 gluoncv
 scipy
 scikit-image

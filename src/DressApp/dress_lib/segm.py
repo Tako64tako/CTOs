@@ -1,8 +1,8 @@
 import numpy as np
 from PIL import Image
-import mxnet as mx
-from mxnet import image
-from mxnet.gluon.data.vision import transforms
+# import mxnet as mx
+# from mxnet import image
+# from mxnet.gluon.data.vision import transforms
 import gluoncv
 import matplotlib.pyplot as plt
 
