@@ -5,9 +5,18 @@
 {% block title %}Online Try On Service{% endblock %}
 
       {% block contents %}
-      <div class="img">
+      <ul class="slider">
             {% for record in garment_records %}
-            <img src="{{record.pictures}}">
+            <div class="img_back">
+                  <li>
+                        <img src="{{record.picture.large.url}}" alt="">
+                        <span>
+                              <a href="#" class="tryon_link image_link">オンライン試着</a>
+                              <a href="{{record.picture_detail_url}}" class="website_link image_link">website</a>
+                        </span>
+                  </li>
+            </div>
             {% endfor %}
-      </div>
+      </ul>
+      
       {% endblock %}

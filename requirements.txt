@@ -9,3 +9,5 @@ opencv-python
 gluoncv
 scipy
 scikit-image
+django-cleanup
+django-stdimage
