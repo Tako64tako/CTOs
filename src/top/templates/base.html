@@ -41,11 +41,11 @@
               <ul>
                 <li class="search_box">
                     <form class="search_form" action="#" method="get" autocomplete="off">
-                        <input class="search_input" placeholder="search here"  type="search" name="q">
+                        <input class="search_input" placeholder="search here"  type="search" name="q" value="{{ request.Get.query }}">
                         <input class="search_btn fas fa-search" type="submit" value="&#xf002;">
                     </form>
                 </li>
-                 <li><a href="{% url 'accounts:login' %}"><i class="fas fa-user-alt"></i></a></li>
+                <li><a href="{% url 'accounts:login' %}"><i class="fas fa-user-alt"></i></a></li>
               </ul>
            </nav>
         </header>
