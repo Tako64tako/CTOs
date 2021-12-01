@@ -226,18 +226,18 @@ main {
 
 /* デフォルトの矢印を消す */
 .slick-arrow:before{
-	content:""!important;
+	content:"";
 }
 
 /*戻る、次へ矢印の位置*/
 .slick-prev, 
 .slick-next {
-    cursor: pointer;/*マウスカーソルを指マークに*/
+    cursor: pointer; /* マウスカーソルを指マークに */
     outline: none;/*クリックをしたら出てくる枠線を消す*/
     border-top: 4px solid rgb(51, 49, 49);/*矢印の色*/
     border-right: 4px solid rgb(51, 49, 49);/*矢印の色*/
-    height: 15px;
-    width: 15px;
+    height: 22px;
+    width: 22px;
 }
 
 .slick-prev {/*戻る矢印の位置と形状*/
@@ -248,6 +248,11 @@ main {
 .slick-next {/*次へ矢印の位置と形状*/
     right: 2%;
     transform: rotate(45deg);
+}
+
+.slick-next:hover {
+    z-index: 3;
+    color:rgb(211, 9, 9);
 }
 
 /*ドットナビゲーションの設定*/
