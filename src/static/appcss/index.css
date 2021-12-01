@@ -250,11 +250,6 @@ main {
     transform: rotate(45deg);
 }
 
-.slick-next:hover {
-    z-index: 3;
-    color:rgb(211, 9, 9);
-}
-
 /*ドットナビゲーションの設定*/
 
 .slick-dots {
