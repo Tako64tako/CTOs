@@ -5,6 +5,25 @@ from .dress_lib import image_cut
 import cv2
 import matplotlib.pyplot as plt
 
+from .forms import UpLoadProfileImgForm
+from .models import UserProfile
+ 
+def edit_profile_avator(request):
+    if request.method != 'POST':
+        form = UpLoadProfileImgForm()
+    else:
+        form = UpLoadProfileImgForm(request.POST, request.FILES)
+        if form.is_valid():
+            avator = form.cleaned_data['avator']
+            user_profile = UserProfile()
+            user_profile.avator = avator
+            user_profile.save()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'dressed.html', context)
+ 
 
 #クライアントにHTMLデータを渡す
 def index(request):
