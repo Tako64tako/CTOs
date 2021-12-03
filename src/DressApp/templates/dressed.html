@@ -49,15 +49,21 @@
                 </div>
 
                 <div id="file_form" class="hide_flag">
-                    <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
+                    <!-- <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>
                         <p><input type="submit" name="submit"></p>
-                    </form>
+                    </form> -->
                     <!--
                     <input type="file" id="file_road_form">
                     <br>
                     <button id="send_next_butt">次へ</button>-->
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token%}
+                        {{ form.avator }}{{ form.avator.errors }}
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                         
                     <div id="file_look">
 
                     </div>
