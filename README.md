@@ -7,6 +7,8 @@
 | 言語/FW | Version|
 | :------------| ---------: |
 | python | 3.8.3　|
+| docker | 20.10.10 |
+| docker-compose 1.29.2|
 
 ## Usage 
 At the first execution
