@@ -16,6 +16,21 @@ body {
     background-attachment: fixed;        
     background-position: center center;
 }
+
+/* オーバーレイ */
+body::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(181, 181, 197, 0.3);
+    opacity: 0.5;
+    display:block;
+    z-index: -100;
+}
+
 header {
    padding: 15px 12% 10px;
    position: fixed;
@@ -142,6 +157,19 @@ main {
     border-radius: 1rem 1rem 0 0;
 }
 
+.slider .img_back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(181, 181, 197, 0.15);
+    opacity: 0.5;
+    display:block;
+}
+
+
 .slider img {
     width: 35vw;
     max-width: 350px;
@@ -216,6 +244,7 @@ main {
     .img_back li span {
       transform: translateY(100px);
       transition: 0.2s;
+      z-index: 50;
     }
     .img_back:hover span {
       transform: translateY(0);
@@ -234,10 +263,11 @@ main {
 .slick-next {
     cursor: pointer; /* マウスカーソルを指マークに */
     outline: none;/*クリックをしたら出てくる枠線を消す*/
-    border-top: 4px solid rgb(51, 49, 49);/*矢印の色*/
-    border-right: 4px solid rgb(51, 49, 49);/*矢印の色*/
+    border-top: 4px solid rgb(0, 0, 0);/*矢印の色*/
+    border-right: 4px solid rgb(0, 0, 0);/*矢印の色*/
     height: 22px;
     width: 22px;
+    z-index: 100;
 }
 
 .slick-prev {/*戻る矢印の位置と形状*/
@@ -250,9 +280,38 @@ main {
     transform: rotate(45deg);
 }
 
-.slick-next:hover {
-    z-index: 3;
-    color:rgb(211, 9, 9);
+.slick-next::after {
+	content: '';
+	position: absolute;
+	top: 30%;
+	left: 70%;
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 0;
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+.slick-prev::after {
+	content: '';
+	position: absolute;
+	top: 30%;
+	left: 80%;
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 0;
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+.slick-prev:hover::after,
+.slick-next:hover::after {
+	max-width: 50px;
+	max-height: 50px;
+    width: 300%;
+    height: 300%;
 }
 
 /*ドットナビゲーションの設定*/
