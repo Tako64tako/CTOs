@@ -6,48 +6,43 @@
 
 
 {% block contents %}
-<!-- ユーザー名とパスワードが一致しない場合のメッセージ -->
-{% if form.errors %}
-<p style="color: red">ユーザー名とパスワードが一致しません。</p>
-{% endif %}
+
+<!--login.cssとの紐付け-->
+<link rel="stylesheet" href={% static "appcss/login.css" %}>
+
+<!--中心に持ってきたくて無理矢理余白を入れた。s-->
+<br><br>
+<br><br>
+
 
 <!-- ログインのフォームを配置 -->
-<form method="post">
+<!--<form method="post" name="form-login">-->
 {% csrf_token %}  
 <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
 <!-- Usernameのラベル(非表示) -->
-<label for="Username" class="visually-hidden">
-  User name</label>
-<!-- usernameの<input>タグを出力-->
-<!-- name属性の値はLoginViewで定義されているフィールド名username -->
-<input type="text"
-       name="username"
-       id="id_username"
-       maxlength="150"
-       autocapitalize="none"
-       autocomplete="username"
-       class="form-control"
-       placeholder="ユーザー名"
-       required autofocus>
-<!-- Passwordのラベル(非表示) -->
-<label for="Password" class="visually-hidden">
-  Password</label>
-<!-- passwordの<input>タグを出力-->
-<!-- name属性の値はLoginViewで定義されているフィールド名password -->
-<input type="password"
-       name="password"
-       id="id_password"
-       autocomplete="current-password"
-       class="form-control"
-       placeholder="パスワード"
-       required>
-<!-- <div class="checkbox mb-3">～</div>削除 -->
-<!-- <button>～</button>を書き換えてログインボタンを配置 -->
-<input class="w-100 btn btn-lg btn-primary"
-       type="submit" value="ログイン">
-<!-- パスワードリセットページのリンクテキスト -->
+
+<div id="login">
+       <form method="POST" name='form-login'>
+         <!--<span class="fontawesome-user"></span>-->
+           <input type="text" id="user" placeholder="Username">
+        
+         <!--<span class="fontawesome-lock"></span>-->
+           <input type="password" id="pass" placeholder="Password">
+         
+         <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login">
+
+ 
+         <!-- ユーザー名とパスワードが一致しない場合のメッセージ -->
+{% if form.errors %}
+<div class=container4>
+       <p>ユーザー名とパスワードが一致しません
+</div>
+{% endif %}
+
+
 <br><br>
-<p><a href="{% url 'password_reset' %}">パスワードを忘れましたか?</a><p>
+<p><a href="{% url 'password_reset' %}">パスワードを忘れましたか?</a></p>
+</div>
 <!-- ログイン直後のリダイレクト先(トップページ)のURLパターンを設定 -->
 <input type="hidden"
        name="next"
