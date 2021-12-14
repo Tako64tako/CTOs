@@ -17,12 +17,13 @@
 
 <!-- ログインのフォームを配置 -->
 <!--<form method="post" name="form-login">-->
-{% csrf_token %}  
+
 <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
 <!-- Usernameのラベル(非表示) -->
 
 <div id="login">
        <form method="POST" name='form-login'>
+        {% csrf_token %}  
          <!--<span class="fontawesome-user"></span>-->
            <input type="text" id="user" placeholder="Username">
         
