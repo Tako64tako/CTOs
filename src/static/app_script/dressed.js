@@ -107,7 +107,7 @@ kyanseru[0].addEventListener("click",function(){
     human_icon_flag = 0
 })
 
-const file_road_form = document.getElementById("uploadfile");
+const file_road_form = document.getElementById("id_picture");
 //ファイルを選択したときにフォームに画像を表示させる処理(アップロードではない)
 function fileChange(ev) {
     var target = ev.target;
@@ -153,20 +153,20 @@ const cambus = document.getElementById("cambus")
 $('#ajax-file-send').on('submit', function(e) {
     e.preventDefault();
     var fd = new FormData($("#ajax-file-send").get(0));
-    for (let value of fd.entries()) { 
-        console.log(value); 
+    for (let value of fd.entries()) {
+        console.log(value);
     }
     $.ajax({
         'url': ajax_file_url,
         'type': 'post',
         'data': fd,
         'processData': false,
-        'contentType': false,
-        'dataType': 'json'
+        'contentType': false
+        /*'dataType': 'json'*/
     })
     .done(function(response){
         //Ajax通信が成功した場合に実行する処理
-        console.log("ppap");
+        console.log("成功！");
         /*
         file_form.className = 'none_flag';
         cambus_form.className = 'visible_flag';

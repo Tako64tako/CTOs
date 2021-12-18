@@ -13,7 +13,7 @@
             <div id="sub_frame">
                 <div id="sub_left">
                     <img src="{% static "app_images/dress_img/dress2.jpeg" %}" alt="no_img" id="dres_back">
-                    <img src="{% static "app_images/dress_img/3_40_haikei.png" %}" alt="no_img" id="user_img">
+                    <img src="{% static "app_images/dress_img/3_40_haikei.png" %}" alt="no_img" id="user_img" class="hide_flag">
                     <div class="icon">
                         <img src="{% static "app_images/dress_img/human.png" %}" alt="no_img" id="human_icon">
                     </div>
@@ -49,20 +49,33 @@
                 </div>
 
                 <div id="file_form" class="hide_flag">
-                    <!-- <form id="ajax-file-send" action="" method="post" enctype="multipart/form-data">
+                    <form id="ajax-file-send" action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>
+                        <p>
+                            <label for="id_human_name">Human name:</label>
+                            <input type="text" name="human_name" maxlength="100" required="" id="id_human_name">
+                        </p>
+                        <p>
+                            <label for="id_height">Height:</label>
+                            <input type="number" name="height" value="0" required="" id="id_height"></p>
+                        <p>
+                            <label for="id_picture">Picture:</label>
+                            <input type="file" name="picture" accept="image/*" id="id_picture"></p>
+                        <!--<p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>-->
                         <p><input type="submit" name="submit"></p>
-                    </form> -->
+                    </form>
                     <!--
-                    <input type="file" id="file_road_form">
-                    <br>
-                    <button id="send_next_butt">次へ</button>-->
+                    <form enctype="multipart/form-data" action="{% url 'DressApp:upload' %}" method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" value="Upload" id="f_b">
+                    </form>-->
+                    <!--
                     <form action="" method="post" enctype="multipart/form-data">
                         {% csrf_token%}
                         {{ form.avator }}{{ form.avator.errors }}
                         <button type="submit" class="btn">Register</button>
-                    </form>
+                    </form>-->
                          
                     <div id="file_look">
 

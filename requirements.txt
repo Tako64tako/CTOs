@@ -11,3 +11,6 @@ scipy
 scikit-image
 django-cleanup
 django-stdimage
+tensorflow
+tensorflowjs
+tqdm
