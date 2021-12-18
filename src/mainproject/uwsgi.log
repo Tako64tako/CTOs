@@ -6540,3 +6540,55 @@ uWSGI running as root, you can use --uid/--gid/--chroot options
 gracefully (RE)spawned uWSGI master process (pid: 1)
 spawned uWSGI worker 1 (pid: 126, cores: 1)
 Python auto-reloader enabled
+*** Starting uWSGI 2.0.20 (64bit) on [Sat Dec 18 11:56:55 2021] ***
+compiled with version: 10.2.1 20210110 on 08 December 2021 15:49:40
+os: Linux-5.10.76-linuxkit #1 SMP Mon Nov 8 10:21:19 UTC 2021
+nodename: e7caaca482b0
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /code
+detected binary path: /usr/local/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8001 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.12 (default, Dec  3 2021, 02:33:14)  [GCC 10.2.1 20210110]
+Python main interpreter initialized at 0x55c7bd50af00
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 145840 bytes (142 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 3 seconds on interpreter 0x55c7bd50af00 pid: 1 (default app)
+mountpoint  already configured. skip.
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1)
+spawned uWSGI worker 1 (pid: 7, cores: 1)
+Python auto-reloader enabled
+dress_lib
+scripts
+simple_bodypix
+2021-12-18 20:57:30.915835: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib/python3.7/site-packages/cv2/../../lib64:
+2021-12-18 20:57:30.917515: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2021-12-18 20:57:44.824453: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib/python3.7/site-packages/cv2/../../lib64:
+2021-12-18 20:57:44.841985: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2021-12-18 20:57:44.845038: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (e7caaca482b0): /proc/driver/nvidia/version does not exist
+2021-12-18 20:57:44.867698: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-12-18 20:57:46.676352: W tensorflow/core/common_runtime/graph_constructor.cc:1511] Importing a graph with a lower producer version 114 into an existing graph with producer version 898. Shape inference will have run different parts of the graph with different producer versions.
+Loading model...done.
+Loading sample image...pytorch-openpose
+[pid: 7|app: 0|req: 1/1] 192.168.208.1 () {56 vars in 1131 bytes} [Sat Dec 18 20:57:17 2021] GET / => generated 3121 bytes in 30661 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[pid: 7|app: 0|req: 2/2] 192.168.208.1 () {56 vars in 1143 bytes} [Sat Dec 18 20:58:10 2021] GET /dress/ => generated 5822 bytes in 301 msecs (HTTP/1.1 200) 7 headers in 349 bytes (1 switches on core 0)
+[pid: 7|app: 0|req: 3/3] 192.168.208.1 () {64 vars in 1381 bytes} [Sat Dec 18 20:59:26 2021] POST /dress/ajax-file-send/ => generated 59 bytes in 1400 msecs (HTTP/1.1 200) 5 headers in 157 bytes (1 switches on core 0)

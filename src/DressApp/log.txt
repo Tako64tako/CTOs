@@ -2,5 +2,5 @@ form.is_valid() = True
 {'human_name': '鈴木涼介', 'height': 165, 'picture': <TemporaryUploadedFile: Hito.png (image/png)>}
 鈴木涼介
 165
-Hito_P14fRRp.png
+Hito.png
 <class 'django.db.models.fields.files.ImageFieldFile'>

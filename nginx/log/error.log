@@ -571,3 +571,12 @@
 2021/12/18 09:32:46 [notice] 1#1: signal 17 (SIGCHLD) received from 23
 2021/12/18 09:32:46 [notice] 1#1: worker process 23 exited with code 0
 2021/12/18 09:32:46 [notice] 1#1: exit
+2021/12/18 11:56:58 [notice] 1#1: using the "epoll" event method
+2021/12/18 11:56:58 [notice] 1#1: nginx/1.21.3
+2021/12/18 11:56:58 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/18 11:56:58 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/18 11:56:58 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/18 11:56:58 [notice] 1#1: start worker processes
+2021/12/18 11:56:58 [notice] 1#1: start worker process 22
+2021/12/18 11:56:58 [notice] 1#1: start worker process 23
+2021/12/18 11:59:25 [warn] 22#22: *8 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
