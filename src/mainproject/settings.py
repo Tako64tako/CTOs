@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'top.apps.TopConfig',
     'bootstrap4',   # django-bootstrap4
     # dressアプリを追加する
-    'DressApp',
+    'DressApp.apps.DressappConfig',
     'django_cleanup',
     'stdimage', 
 ]
