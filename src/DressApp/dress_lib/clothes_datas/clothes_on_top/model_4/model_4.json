@@ -1,0 +1,11 @@
+{
+    "neck": {"right_point":[52,7],"left_point":[90,7],"height":[71,37]},
+    "right_shoulder": [53,25],
+    "right_elbow": [19,106],
+    "right_wrist": [30,182],
+    "left_shoulder": [140,27],
+    "left_elbow": [178,108],
+    "left_wrist": [165,187],
+    "right_arm": {"right_elbow":[18,109]},
+    "left_arm": {"left_elbow":[33,108]}
+}

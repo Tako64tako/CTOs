@@ -23,7 +23,8 @@ IMG_STD = np.array([0.229, 0.224, 0.225, 1]).reshape((1, 1, 4))
 
 STRIDE = 32
 RESTORE_FROM = './DressApp/dress_lib/indexnet_matting/pretrained/indexnet_matting.pth.tar'
-RESULT_DIR = './DressApp/dress_lib/images/mattes'
+#RESULT_DIR = './DressApp/dress_lib/images/mattes'
+RESULT_DIR = "./DressApp/dress_lib/images/via/"#臨時追加
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -85,7 +86,7 @@ def image_alignment(x, output_stride, odd=False):
 
     return new_x
 
-def inference(image_path, image, trimap):
+def inference(filename, image, trimap):
     with torch.no_grad():
         #image, trimap = read_image(image_path), read_image(trimap_path)
         trimap = np.expand_dims(trimap, axis=2)
@@ -120,8 +121,8 @@ def inference(image_path, image, trimap):
         mask = np.equal(trimap, 128).astype(np.float32)
         alpha = (1 - mask) * trimap + mask * alpha
 
-        _, image_name = os.path.split(image_path)
-        Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, image_name))
+        #_, image_name = os.path.split(image_path)
+        #Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, filename))#確認保存用
         # Image.fromarray(alpha.astype(np.uint8)).show()
 
         running_frame_rate = 1 * float(1 / (end - start)) # batch_size = 1
@@ -131,7 +132,7 @@ def inference(image_path, image, trimap):
         return(alpha.astype(np.uint8))
 
 
-def infer(blur_img,trimap_img,img_path):
+def infer(blur_img,trimap_img,filename):
     image_path = [
         #'./examples/images/beach-747750_1280_2.png',
         #'./examples/images/boy-1518482_1920_9.png',
@@ -169,10 +170,10 @@ def infer(blur_img,trimap_img,img_path):
     print(1)
     imgs = [blur_img]
     trimaps = [trimap_img]
-    image_paths = [img_path]
+    filenames = [filename]
     #for image, trimap in zip(image_path, trimap_path):
-    for image_path, image, trimap in zip(image_paths, imgs, trimaps):
-        matte = inference(image_path, image, trimap)
+    for filename, image, trimap in zip(filenames, imgs, trimaps):
+        matte = inference(filename, image, trimap)
         print("last")
     return(matte)
 

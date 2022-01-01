@@ -580,3 +580,184 @@
 2021/12/18 11:56:58 [notice] 1#1: start worker process 22
 2021/12/18 11:56:58 [notice] 1#1: start worker process 23
 2021/12/18 11:59:25 [warn] 22#22: *8 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:02:10 [warn] 23#23: *18 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000002, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:05:42 [warn] 22#22: *28 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000003, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:11:45 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000004, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:12:16 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000005, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:12:48 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000006, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:13:50 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000007, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:14:28 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000008, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:15:22 [warn] 22#22: *31 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000009, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/18 13:19:05 [warn] 22#22: *38 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000010, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 05:36:56 [warn] 22#22: *40 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000011, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 05:38:37 [warn] 22#22: *42 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000012, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 05:39:12 [warn] 22#22: *42 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000013, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 05:41:11 [warn] 22#22: *45 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000014, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 05:42:23 [warn] 22#22: *45 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000015, client: 192.168.208.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/19 12:43:29 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2021/12/19 12:43:29 [notice] 23#23: gracefully shutting down
+2021/12/19 12:43:29 [notice] 22#22: gracefully shutting down
+2021/12/19 12:43:29 [notice] 22#22: exiting
+2021/12/19 12:43:29 [notice] 22#22: exit
+2021/12/19 12:43:29 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2021/12/19 12:43:29 [notice] 1#1: worker process 22 exited with code 0
+2021/12/19 12:43:29 [notice] 1#1: signal 29 (SIGIO) received
+2021/12/19 12:47:24 [notice] 1#1: using the "epoll" event method
+2021/12/19 12:47:24 [notice] 1#1: nginx/1.21.3
+2021/12/19 12:47:24 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/19 12:47:24 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/19 12:47:24 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/19 12:47:24 [notice] 1#1: start worker processes
+2021/12/19 12:47:24 [notice] 1#1: start worker process 22
+2021/12/19 12:47:24 [notice] 1#1: start worker process 23
+2021/12/19 15:33:57 [warn] 22#22: *8 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 192.168.224.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 08:25:11 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2021/12/20 08:25:11 [notice] 22#22: gracefully shutting down
+2021/12/20 08:25:11 [notice] 23#23: gracefully shutting down
+2021/12/20 08:25:11 [notice] 22#22: exiting
+2021/12/20 08:25:11 [notice] 23#23: exiting
+2021/12/20 08:25:11 [notice] 22#22: exit
+2021/12/20 08:25:11 [notice] 23#23: exit
+2021/12/20 08:25:11 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2021/12/20 08:25:11 [notice] 1#1: worker process 22 exited with code 0
+2021/12/20 08:25:11 [notice] 1#1: worker process 23 exited with code 0
+2021/12/20 08:25:11 [notice] 1#1: exit
+2021/12/20 08:27:57 [notice] 1#1: using the "epoll" event method
+2021/12/20 08:27:57 [notice] 1#1: nginx/1.21.3
+2021/12/20 08:27:57 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/20 08:27:57 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/20 08:27:57 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/20 08:27:57 [notice] 1#1: start worker processes
+2021/12/20 08:27:57 [notice] 1#1: start worker process 23
+2021/12/20 08:27:57 [notice] 1#1: start worker process 24
+2021/12/20 09:14:07 [warn] 23#23: *5 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 11:46:32 [warn] 24#24: *19 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000002, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:01:56 [warn] 24#24: *47 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000003, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:02:26 [warn] 24#24: *47 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000004, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:02:59 [warn] 24#24: *47 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000005, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:07:00 [warn] 24#24: *62 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000006, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:08:49 [warn] 23#23: *68 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000007, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:14:51 [warn] 23#23: *84 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000008, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:16:51 [warn] 23#23: *88 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000009, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:29:17 [warn] 23#23: *90 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000010, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:30:29 [warn] 24#24: *96 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000011, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:33:50 [warn] 23#23: *101 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000012, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 12:41:05 [warn] 23#23: *103 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000013, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:35:58 [warn] 23#23: *108 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000014, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:53:39 [warn] 23#23: *120 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000015, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:55:13 [warn] 23#23: *123 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000016, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:55:36 [error] 23#23: *125 open() "/static/app_script/dressed.js" failed (2: No such file or directory), client: 192.168.240.1, server: 127.0.0.1, request: "GET /static/app_script/dressed.js HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:55:39 [error] 23#23: *125 open() "/static/app_script/dressed.js" failed (2: No such file or directory), client: 192.168.240.1, server: 127.0.0.1, request: "GET /static/app_script/dressed.js HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:55:42 [error] 24#24: *131 open() "/static/app_script/dressed.js" failed (2: No such file or directory), client: 192.168.240.1, server: 127.0.0.1, request: "GET /static/app_script/dressed.js HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:55:42 [error] 23#23: *123 open() "/static/app_script/dressed.js" failed (2: No such file or directory), client: 192.168.240.1, server: 127.0.0.1, request: "GET /static/app_script/dressed.js HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 13:58:20 [warn] 23#23: *137 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000017, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:00:08 [warn] 23#23: *148 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000018, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:02:25 [warn] 23#23: *151 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000019, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:05:43 [warn] 24#24: *169 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000020, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:06:30 [warn] 24#24: *171 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000021, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:07:00 [warn] 23#23: *168 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000022, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:07:31 [warn] 24#24: *165 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000023, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:11:19 [warn] 24#24: *205 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000024, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 14:17:29 [warn] 24#24: *222 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000025, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 15:19:35 [error] 23#23: *493 open() "/static/appcss/dressed.css" failed (2: No such file or directory), client: 192.168.240.1, server: 127.0.0.1, request: "GET /static/appcss/dressed.css HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 15:23:34 [warn] 23#23: *499 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000026, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/20 16:17:44 [warn] 23#23: *501 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000027, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/21 01:04:56 [warn] 23#23: *503 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000028, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/21 05:42:13 [warn] 23#23: *508 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000029, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/21 07:10:20 [warn] 23#23: *521 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000030, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/21 07:17:25 [warn] 23#23: *524 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000031, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/21 07:18:26 [warn] 23#23: *524 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000032, client: 192.168.240.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/22 12:36:10 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2021/12/22 12:36:10 [notice] 23#23: gracefully shutting down
+2021/12/22 12:36:10 [notice] 24#24: gracefully shutting down
+2021/12/22 12:36:10 [notice] 23#23: exiting
+2021/12/22 12:36:10 [notice] 24#24: exiting
+2021/12/22 12:36:10 [notice] 24#24: exit
+2021/12/22 12:36:10 [notice] 23#23: exit
+2021/12/22 12:36:10 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2021/12/22 12:36:10 [notice] 1#1: worker process 24 exited with code 0
+2021/12/22 12:36:10 [notice] 1#1: signal 29 (SIGIO) received
+2021/12/22 12:36:10 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2021/12/22 12:36:10 [notice] 1#1: worker process 23 exited with code 0
+2021/12/22 12:36:10 [notice] 1#1: exit
+2021/12/22 12:36:34 [notice] 1#1: using the "epoll" event method
+2021/12/22 12:36:34 [notice] 1#1: nginx/1.21.3
+2021/12/22 12:36:34 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/22 12:36:34 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/22 12:36:34 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/22 12:36:34 [notice] 1#1: start worker processes
+2021/12/22 12:36:34 [notice] 1#1: start worker process 24
+2021/12/22 12:36:34 [notice] 1#1: start worker process 25
+2021/12/22 12:40:02 [warn] 25#25: *12 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/22 16:45:15 [warn] 25#25: *17 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000002, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/22 22:40:09 [warn] 25#25: *19 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000003, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/23 03:16:15 [warn] 25#25: *21 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000004, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/23 03:30:45 [warn] 25#25: *23 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000005, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/23 03:52:00 [warn] 25#25: *35 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000006, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/24 01:18:34 [warn] 25#25: *42 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000007, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/24 01:24:40 [warn] 25#25: *51 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000008, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/24 22:45:35 [warn] 25#25: *54 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000009, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 02:32:17 [warn] 25#25: *57 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000010, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 10:53:47 [warn] 25#25: *59 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000011, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 11:00:54 [warn] 25#25: *61 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000012, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 11:42:08 [warn] 25#25: *66 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000013, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 12:00:22 [warn] 25#25: *71 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000014, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 13:28:09 [warn] 24#24: *79 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000015, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 13:30:29 [warn] 24#24: *79 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000016, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 13:43:45 [warn] 25#25: *88 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000017, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 13:48:58 [warn] 25#25: *91 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000018, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 13:54:47 [warn] 25#25: *104 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000019, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 14:32:33 [warn] 25#25: *109 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000020, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 14:36:45 [warn] 25#25: *114 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000021, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 14:51:58 [warn] 25#25: *119 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000022, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:02:49 [warn] 25#25: *125 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000023, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:06:58 [warn] 25#25: *128 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000024, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:09:15 [warn] 25#25: *128 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000025, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:11:54 [warn] 25#25: *128 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000026, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:14:58 [warn] 25#25: *134 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000027, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:19:52 [warn] 25#25: *136 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000028, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:23:35 [warn] 25#25: *141 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000029, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:32:59 [warn] 25#25: *146 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000030, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:36:06 [warn] 25#25: *148 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000031, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:41:45 [warn] 25#25: *151 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000032, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/25 15:44:00 [warn] 25#25: *151 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000033, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/26 01:25:32 [warn] 25#25: *169 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000034, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 00:40:46 [warn] 25#25: *186 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000035, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 00:44:56 [warn] 25#25: *192 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000036, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 00:51:26 [warn] 25#25: *199 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000037, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 00:54:06 [warn] 25#25: *204 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000038, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 01:01:01 [warn] 25#25: *209 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000039, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 01:07:34 [warn] 25#25: *214 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000040, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/27 01:16:14 [warn] 25#25: *221 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000041, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/28 09:03:00 [notice] 1#1: using the "epoll" event method
+2021/12/28 09:03:00 [notice] 1#1: nginx/1.21.3
+2021/12/28 09:03:00 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/28 09:03:00 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/28 09:03:00 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/28 09:03:00 [notice] 1#1: start worker processes
+2021/12/28 09:03:00 [notice] 1#1: start worker process 22
+2021/12/28 09:03:00 [notice] 1#1: start worker process 23
+2021/12/28 10:49:19 [warn] 22#22: *9 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2021/12/31 12:54:44 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2021/12/31 12:54:44 [notice] 22#22: gracefully shutting down
+2021/12/31 12:54:44 [notice] 23#23: gracefully shutting down
+2021/12/31 12:54:44 [notice] 22#22: exiting
+2021/12/31 12:54:44 [notice] 23#23: exiting
+2021/12/31 12:54:44 [notice] 23#23: exit
+2021/12/31 12:54:44 [notice] 22#22: exit
+2021/12/31 12:54:44 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2021/12/31 12:54:44 [notice] 1#1: worker process 22 exited with code 0
+2021/12/31 12:54:44 [notice] 1#1: signal 29 (SIGIO) received
+2021/12/31 12:54:44 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2021/12/31 12:54:44 [notice] 1#1: worker process 23 exited with code 0
+2021/12/31 12:54:44 [notice] 1#1: exit
+2021/12/31 13:20:59 [notice] 1#1: using the "epoll" event method
+2021/12/31 13:20:59 [notice] 1#1: nginx/1.21.3
+2021/12/31 13:20:59 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/12/31 13:20:59 [notice] 1#1: OS: Linux 5.10.76-linuxkit
+2021/12/31 13:20:59 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/12/31 13:20:59 [notice] 1#1: start worker processes
+2021/12/31 13:20:59 [notice] 1#1: start worker process 23
+2021/12/31 13:20:59 [notice] 1#1: start worker process 24
+2022/01/01 08:41:13 [warn] 23#23: *195 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2022/01/01 08:55:21 [warn] 23#23: *204 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000002, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"

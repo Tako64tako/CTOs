@@ -12,7 +12,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3"
 
 
 # PATHS
-imagePath = './simple_bodypix_python_master/input_img/rs_bler_IMG_0137_risize.png'
+#imagePath = './simple_bodypix_python_master/input_img/rs_bler_IMG_0137_risize.png'
 outdirPath = "./DressApp/dress_lib/images/part_segm_images/"
 modelPath = './DressApp/dress_lib/simple_bodypix_python_master/bodypix_resnet50_float_model-stride16/model.json'
 
@@ -259,15 +259,22 @@ def getBoundingBox(keypointPositions, offset=(10, 10, 10, 10)):
             maxY = y
     return (minX - offset[0], minY-offset[1]), (maxX+offset[2], maxY + offset[3])
 
-def segm_run(alpha_img_path,file_name):
+def segm_run(alpha_img,height):
     # load sample image into numpy array
-    imagePath = alpha_img_path
-    img = tf.keras.preprocessing.image.load_img(imagePath)
+    #imagePath = alpha_img_path
+    #img = tf.keras.preprocessing.image.load_img(imagePath)
+    img = cv2.cvtColor(alpha_img,cv2.COLOR_BGRA2BGR)
+    img = tf.keras.preprocessing.image.array_to_img(img, scale=True)
+    '''with open("./DressApp/log.txt", mode='a') as f:# python側の処理が見えるようにログファイルに書き込み
+        f.write("tf.keras.preprocessing.image.load_img(imagePath)")
+        f.write("\n")
+        f.write(str(img.getpixel((0,0))))
+        f.write("\n")'''
     imgWidth, imgHeight = img.size
     print("imgWidth"+str(imgWidth))
     print("imgHeight"+str(imgHeight))
     #actualWidth,actualHeight = humanImgSize_decide(165,imgWidth,imgHeight)
-    actualWidth,actualHeight = humanImgSize_decide(178,imgWidth,imgHeight)
+    actualWidth,actualHeight = humanImgSize_decide(height,imgWidth,imgHeight)
 
     targetWidth = (int(imgWidth) // OutputStride) * OutputStride + 1
     targetHeight = (int(imgHeight) // OutputStride) * OutputStride + 1
@@ -509,9 +516,8 @@ def segm_run(alpha_img_path,file_name):
     '''plt.title('human_segm_ver2')
     plt.imshow(human_segm)
     plt.show()'''
-    actualimg = cv2.imread(imagePath,-1)
-    actualimg = cv2.resize(actualimg, dsize = (actualWidth,actualHeight), interpolation = cv2.INTER_AREA)
-    #cv2.imwrite("./actual_img.png",actualimg)
+    #actualimg = cv2.imread(imagePath,-1)
+    actualimg = cv2.resize(alpha_img, dsize = (actualWidth,actualHeight), interpolation = cv2.INTER_AREA)
     '''plt.title('actualimg')
     plt.imshow(cv2.cvtColor(actualimg,cv2.COLOR_BGRA2RGBA))
     plt.show()'''
@@ -538,10 +544,10 @@ def segm_run(alpha_img_path,file_name):
     plt.imshow(cv2.cvtColor(actualimg,cv2.COLOR_BGRA2RGBA))
     plt.show()'''
     human_segm = dilated_human_segm(human_segm,(3,3),ite=2)
-    plt.title('human_segm_ver5')
+    '''plt.title('human_segm_ver5')
     plt.imshow(human_segm)
     plt.show()
-    cv2.imwrite(outdirPath+file_name,human_segm)
+    cv2.imwrite(outdirPath+file_name,human_segm)'''#確認保存用
 
     print('partheatmapPositions', np.asarray(partHeatmapPositions).shape)
     print('partoffsetVector', np.asarray(partOffsetVector).shape)

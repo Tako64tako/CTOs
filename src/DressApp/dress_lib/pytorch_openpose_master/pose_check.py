@@ -51,7 +51,7 @@ def pose_esti(actual_img,file_name):#acutual_img = BGRA
     canvas = util.draw_bodypose(canvas, candidate, subset)
 
     result_image_path = OUT_DIR_PATH + file_name
-    cv2.imwrite(result_image_path, canvas)
+    cv2.imwrite(result_image_path, canvas)#確認保存用
     plt.imshow(cv2.cvtColor(canvas,cv2.COLOR_BGR2RGB))
     plt.show()
     

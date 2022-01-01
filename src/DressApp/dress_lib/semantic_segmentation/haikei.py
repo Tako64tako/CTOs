@@ -145,12 +145,6 @@ def gen_trimap(img,mask,k_size=(5,5),ite=1):
 def cutting_out(dir_path,filename):
     # 2.画像を読み込み、DeepLabv3の入力サイズに合わせてリサイズします。
     image_path = 'IMG_0101.png'
-    #image_path = 'data1.jpg'
-    #image_path = 'kei.jpg'
-    image_path = "Hito_iphassyu.jpg"
-    image_path = "result1.png"
-    image_path = "Hito_risize.jpg"
-    image_path = "Hito_risize.png"
     image_path = "IMG_0137_risize.png"
     image_path = filename
 
@@ -158,7 +152,7 @@ def cutting_out(dir_path,filename):
     images_dir = "./DressApp/dress_lib/images/images/"
     input_dir_name = "./DressApp/dress_lib/images/temporary_imgs/"
     input_dir_name = dir_path
-    img = cv2.imread(input_dir_name+image_path)
+    img = cv2.imread(input_dir_name+filename)
     img = img[...,::-1] #BGR->RGB
     img_h,img_w,_ = img.shape #高さ 幅 色を代入
     real_img = img.copy()
@@ -169,14 +163,14 @@ def cutting_out(dir_path,filename):
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     img,trimap,niti = gen_trimap(img,mask,k_size=(3,3),ite=2)
     blur_img = bokasi_compound(img,trimap)
-    cv2.imwrite(images_dir+"bler_"+image_path,blur_img)
+    #cv2.imwrite(images_dir+filename,blur_img)#確認保存用
 
-    cv2.imwrite(trimaps_dir+"bler_"+image_path,trimap)
+    #cv2.imwrite(trimaps_dir+filename,trimap)#確認保存用
     print(blur_img.shape)
     print(trimap.shape)
     plt.title("trimap")
     plt.imshow(trimap)
     plt.show()
-    return(blur_img,trimap,images_dir+"bler_"+image_path)
+    return(blur_img,trimap,images_dir+filename)
 if __name__ == "__main__":
     cutting_out()

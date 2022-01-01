@@ -1,6 +1,31 @@
 form.is_valid() = True
-{'human_name': '鈴木涼介', 'height': 165, 'picture': <TemporaryUploadedFile: Hito.png (image/png)>}
-鈴木涼介
-165
-Hito.png
+{'human_name': '松田雄飛', 'height': 178, 'picture': <TemporaryUploadedFile: IMG_0137.png (image/png)>}
+91
+松田雄飛
+178
+IMG_0137.png
 <class 'django.db.models.fields.files.ImageFieldFile'>
+topProc_time:0.5612227916717529[sec]
+tf.keras.preprocessing.image.array_to_img(alpha_img, scale=True)
+(255, 255, 255, 0)
+imgProc_time:75.56257796287537[sec]
+91
+/media/cut_images/IMG_0137.png
+./DressApp/dress_lib/materials/part_segms/IMG_0137.png
+./DressApp/dress_lib/materials/skeleton_jsons/IMG_0137.json
+imgProc_time:75.56257796287537[sec]
+bottom_time:0.09531474113464355[sec]
+elapsed_time:76.22654676437378[sec]
+---point error---
+Traceback (most recent call last):
+  File "./DressApp/views.py", line 192, in select_clothes
+    result_img,brank_img = clothes_on_top.change(actual_img,human_segm,candidate,clothes_name)
+  File "./DressApp/dress_lib/change_clothes_lib/clothes_on_top.py", line 789, in change
+    brank_img = torso_change(brank_img,human_segm,candidate,model_name,json_data)
+  File "./DressApp/dress_lib/change_clothes_lib/clothes_on_top.py", line 278, in torso_change
+    brank_img = adjust_torso_rotate(brank_img,human_segm,torso_img,neck_point_mask,shoulder_formed_angle,json_data,neck_max_width_point,neck_min_width_point)
+  File "./DressApp/dress_lib/change_clothes_lib/clothes_on_top.py", line 246, in adjust_torso_rotate
+    brank = cv2.resize(brank,dsize=((human_max_x-human_min_x), 1))#ここで人物部位セグム画像の胴体xサイズにリサイズ
+cv2.error: OpenCV(4.5.4) /tmp/pip-req-build-3129w7z7/opencv/modules/core/src/matrix.cpp:466: error: (-215:Assertion failed) _step >= minstep in function 'Mat'
+
+
