@@ -761,3 +761,11 @@
 2021/12/31 13:20:59 [notice] 1#1: start worker process 24
 2022/01/01 08:41:13 [warn] 23#23: *195 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000001, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
 2022/01/01 08:55:21 [warn] 23#23: *204 a client request body is buffered to a temporary file /var/cache/nginx/client_temp/0000000002, client: 172.18.0.1, server: 127.0.0.1, request: "POST /dress/ajax-file-send/ HTTP/1.1", host: "localhost:8000", referrer: "http://localhost:8000/dress/"
+2022/01/11 07:09:31 [notice] 1#1: using the "epoll" event method
+2022/01/11 07:09:31 [notice] 1#1: nginx/1.21.4
+2022/01/11 07:09:31 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/01/11 07:09:31 [notice] 1#1: OS: Linux 5.10.47-linuxkit
+2022/01/11 07:09:31 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/01/11 07:09:31 [notice] 1#1: start worker processes
+2022/01/11 07:09:31 [notice] 1#1: start worker process 22
+2022/01/11 07:09:31 [notice] 1#1: start worker process 23

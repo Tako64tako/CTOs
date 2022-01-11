@@ -21,11 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j%2z-t*ie7!rsa=xqcc-1dm7=#b(6lcdqel@#7gg8ug9*1^fh#'
+# SECRET_KEY = 'django-insecure-j%2z-t*ie7!rsa=xqcc-1dm7=#b(6lcdqel@#7gg8ug9*1^fh#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
+    import django_heroku  # 追加
+    django_heroku.settings(locals())  # 追加
 ALLOWED_HOSTS = ["*"]
 
 
@@ -144,6 +153,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Django template files read this directory to use Static files(example {% static 'style.css' %})
 STATIC_URL = '/static/'
+
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
