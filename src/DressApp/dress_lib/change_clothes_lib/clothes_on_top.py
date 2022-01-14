@@ -148,11 +148,11 @@ def adjust_torso_rotate(brank_img,human_segm,torso_img,neck_point_mask,shoulder_
             if square_torso[y][x][3] != 0:
                 torso_mask[y][x] = 255
                 if max_y < y:
-                    max_y = y
+                    max_y = y+1
                 if min_y > y:
                     min_y = y
                 if max_x < x:
-                    max_x = x
+                    max_x = x+1
                 if min_x > x:
                     min_x = x
     print("min_y="+str(min_y))
@@ -464,11 +464,11 @@ def adjust_arm_rotate(brank_img,human_segm,upper_arm_img,upper_front_arm_img,arm
             if square_upper_arm_img[y][x][3] != 0:
                 arm_mask[y][x] = 255
                 if max_y < y:
-                    max_y = y
+                    max_y = y+1#この+1は[min_y:max_y]をするため
                 if min_y > y:
                     min_y = y
                 if max_x < x:
-                    max_x = x
+                    max_x = x+1#この+1は[min_x:max_x]をするため
                 if min_x > x:
                     min_x = x
     print("min_y="+str(min_y))
@@ -689,11 +689,11 @@ def bondingCorrection(brank_img,human_segm,model_name):
         for y in range(h):
             for x in range(w):
                 if boding_img[y][x] == ter_n:
-                    if max_x < x+1:
+                    if max_x < x:
                         max_x = x+1
                     if min_x > x:
                         min_x = x
-                    if max_y < y+1:
+                    if max_y < y:
                         max_y = y+1
                     if min_y > y:
                         min_y = y

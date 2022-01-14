@@ -13,7 +13,7 @@ def inference(h,w,img):#推論を行う関数
     print(torch.cuda.is_available())
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")#gpu or cpuへの切り替え
 
-    model_path = './DressApp/dress_lib/models'
+    model_path = './DressApp/dress_lib/semantic_segmentation/models'
     torch.hub.set_dir(model_path)
     model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
     model = model.to(device)
@@ -66,7 +66,7 @@ def hist_cut(img,trimap_img):
     trimap[img != max] = 0 #これで画素値を消す
     return trimap
 
-#人以外に検出してしまった領域を消す
+#人以外に検出してしまった領域を消す(一番大きい領域だけ残し、飛び地の場所を消す)
 def not_human_cut(size_tuple,trimap):
     #print("not_human_cut is trimap = "+str(trimap.dtype))
     zero_img = np.zeros(size_tuple,np.uint8)
@@ -87,7 +87,7 @@ def not_human_cut(size_tuple,trimap):
     trimap[cont_img==0] = 0
     return trimap,cont_img
 
-#bouding_boxに沿って切り抜く
+#元画像の人物が画像にぴったり収まるようにtrimapのbouding_boxから切り取る
 def bounding_cut(img,trimap):
     #print("trimap of bouding_cut = "+str(trimap.dtype))
     cont_img = np.zeros(trimap.shape,np.uint8)#trimapはfloat64のため変換する必要がある
@@ -96,7 +96,9 @@ def bounding_cut(img,trimap):
     x,y,w,h = cv2.boundingRect(contours[0])
     img = img[y:y+h,x:x+w]
     trimap = trimap[y:y+h,x:x+w]
-    fig = plt.figure(figsize=(20,9))
+
+    #確認用
+    '''fig = plt.figure(figsize=(20,9))
     fig.suptitle("plot")
     plt.subplot(1,2,1)
     plt.imshow(img)
@@ -104,22 +106,25 @@ def bounding_cut(img,trimap):
     plt.subplot(1,2,2)
     plt.imshow(trimap,cmap='gray', vmin=0, vmax=255)
     plt.title("part_trimap")
-    plt.show()
+    plt.show()'''
 
     del cont_img
     del hierarchy
     return img,trimap
 
-# 6.OpenCVで膨張収縮処理をしてtrimapを生成し、適当な場所に保存します。下の右のようなtrimapが得られます。
+# OpenCVで膨張収縮などを行い、trimapを生成する
 def gen_trimap(img,mask,k_size=(5,5),ite=1):
     h,w,_ = img.shape
-    plt.title("semantic segmentation")
+    
+    #確認用
+    '''plt.title("semantic segmentation")
     plt.imshow(mask)
-    plt.show()
+    plt.show()'''
+
     #ヒストグラムを作成する。そして0以外の一番多い画素値のものだけ残して消す
     mask = hist_cut(mask,mask)
 
-    #残ってしまったメイン部分以外を消す
+    #残ってしまったメイン部分以外を消す。つまり一番大きい領域だけ残し、飛び地の領域を消す
     trimap,niti = not_human_cut((h,w),mask)
 
     #ruslt用
@@ -129,48 +134,45 @@ def gen_trimap(img,mask,k_size=(5,5),ite=1):
             if trimap[y][x] == 0:
                 img[y][x][3] = 0'''
 
+    #膨張収縮処理を行い「前景」「背景」「そのどちらか」に粗く分解したtrimapを生成する
     kernel = np.ones(k_size,np.uint8) #要素が全て1の配列を生成
     eroded = cv2.erode(trimap,kernel,iterations = ite)
     dilated = cv2.dilate(trimap,kernel,iterations = ite)
-
-    #print(dilated.dtype)
     trimap = np.full(mask.shape,128)#dtype=float64
-    trimap[eroded >= 1] = 255 #なぜか二値画像の白が12 dtypeを変更しても意味なし
+    trimap[eroded >= 1] = 255
     trimap[dilated == 0] = 0
 
+    #元画像の人物が画像にぴったり収まるようにtrimapのbouding_boxから切り取る
     img,trimap = bounding_cut(img,trimap)
 
     return img,trimap,niti
 
+# セマンティックセグメンテーション等の処理を行い、trimapとblur_imgを返す
 def cutting_out(dir_path,filename):
-    # 2.画像を読み込み、DeepLabv3の入力サイズに合わせてリサイズします。
-    image_path = 'IMG_0101.png'
-    image_path = "IMG_0137_risize.png"
-    image_path = filename
-
-    trimaps_dir = "./DressApp/dress_lib/images/trimaps/"
-    images_dir = "./DressApp/dress_lib/images/images/"
-    input_dir_name = "./DressApp/dress_lib/images/temporary_imgs/"
     input_dir_name = dir_path
+    #下準備
     img = cv2.imread(input_dir_name+filename)
     img = img[...,::-1] #BGR->RGB
     img_h,img_w,_ = img.shape #高さ 幅 色を代入
-    real_img = img.copy()
     #img = cv2.resize(img,(320,320))
-    img = cv2.resize(img,(img_w,img_h))
-    img,mask = inference(img_h,img_w,img)#推論でmaskを生成する
+    img = cv2.resize(img,(img_w,img_h))#そのままのサイズでリサイズ
 
+    # 推論でセマンティックセグメンテーションmaskを生成する
+    img,mask = inference(img_h,img_w,img)
+
+    # maskから人物部分以外を消し、「前景」「背景」「そのどちらか」に分解されているtrimapを生成する
+    # また元画像の人物が画像にぴったり収まるようにtrimapのbouding_boxから切り取る
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     img,trimap,niti = gen_trimap(img,mask,k_size=(3,3),ite=2)
-    blur_img = bokasi_compound(img,trimap)
-    #cv2.imwrite(images_dir+filename,blur_img)#確認保存用
 
-    #cv2.imwrite(trimaps_dir+filename,trimap)#確認保存用
+    # indexnet_mattingで、より正確に背景を認識してもらうため、
+    # trimapの「背景」と「そのどちらか」の領域に該当する人物画像の領域に少しぼかしをかける
+    blur_img = bokasi_compound(img,trimap)
+
     print(blur_img.shape)
     print(trimap.shape)
-    plt.title("trimap")
+    #確認用
+    '''plt.title("trimap")
     plt.imshow(trimap)
-    plt.show()
-    return(blur_img,trimap,images_dir+filename)
-if __name__ == "__main__":
-    cutting_out()
+    plt.show()'''
+    return(blur_img,trimap)
