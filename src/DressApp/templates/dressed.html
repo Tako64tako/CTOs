@@ -1,114 +1,143 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %} <!-- settings.pyのstaticfileの設定を読み込む -->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>dressed</title>
-        <link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (min-width:376px)">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (max-width:375px)">
-    </head>
-    <body>
-        <div id="main_frame">
-            <div id="sub_frame">
-                <div id="sub_left">
-                    <img src="{% static "app_images/dress_img/dress2.jpeg" %}" alt="no_img" id="dres_back">
-                    <div id="user_img_box">
-                        <img src="{% static "app_images/dress_img/3_40_haikei.png" %}" alt="no_img" id="user_img" class="hide_flag">
-                    </div>
-                    <div class="icon">
-                        <img src="{% static "app_images/dress_img/human.png" %}" alt="no_img" id="human_icon">
-                    </div>
-                </div>
-                <div id="sub_right">
-                    <div class="model"></div>
-                    <div class="model"></div>
-                    <div class="model"></div>
-                    <div class="model"></div>
-                    <div class="model_have">
-                        <img src="{% static "app_images/dress_img/model_3.png" %}" alt="no_img" id="1.model_3" class="model_img">
-                    </div>
-                    <div class="model_have">
-                        <img src="{% static "app_images/dress_img/model_0.jpeg" %}" alt="no_img" id="1.model_0" class="model_img">
-                    </div>
-                    <div class="model_have" id="down">
-                        <img src="{% static "app_images/dress_img/model_1.png" %}" alt="no_img" id="1.model_1" class="model_img">
-                    </div>
-                </div>
-            </div>
-            <div id="asset_form" class="hide_flag">
-                <div class="avater_icon">
-                    <img src="{% static "app_images/dress_img/human_plus.png" %}" id="human_plus_icon">
-                    <div class="avater_text">
-                        New avater
-                    </div>
-                </div>
-                <div class="avater_icon">
-                    <img src="{% static "app_images/dress_img/human_already.png" %}" alt="no_img" id="human_already_icon">
-                    <div class="avater_text">
-                        Avaters
-                    </div>
-                </div>
 
-                <div id="file_form" class="none_flag">
-                    <form id="ajax-file-send" action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p>
-                            <label for="id_human_name">Human name:</label>
-                            <input type="text" name="human_name" maxlength="100" required="" id="id_human_name">
-                        </p>
-                        <p>
-                            <label for="id_height">Height:</label>
-                            <input type="number" name="height" value="0" required="" id="id_height"></p>
-                        <p>
-                            <label for="id_picture">Picture:</label>
-                            <input type="file" name="picture" accept="image/*" id="id_picture"></p>
-                        <!--<p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>-->
-                        <p><input type="submit" name="submit"></p>
-                    </form>
-                    <!--
-                    <form enctype="multipart/form-data" action="{% url 'DressApp:upload' %}" method="POST">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <input type="submit" value="Upload" id="f_b">
-                    </form>-->
-                    <!--
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token%}
-                        {{ form.avator }}{{ form.avator.errors }}
-                        <button type="submit" class="btn">Register</button>
-                    </form>-->
-                         
-                    <div id="file_look">
+<!-- ヘッダー情報のページタイトルを設定する -->
+{% block title %}dressed{% endblock %}
 
-                    </div>
-                    <button class="kyanseru">キャンセル</button>
-                </div>
-                <div id="avater_select_form" class="none_flag">
-                    <div id="select_img_contents">
-                        {% for image in images %}
-                        <div class="cut_img_contant">
-                            <!--<img class="cut_img" src='{{ MEDIA_URL }}{{image.picture}}'>-->
-                            <img class="cut_img" src='{{image.cut_image_path}}' id='{{image.id}}' onclick="click_cut_img(this)">
-                            <h2 class="cut_img_name">{{ image.human_name }}</h2>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <button class="kyanseru">キャンセル</button>
-                </div>
+<!-- main文を設定する -->
+{% block contents %}
+<!--dressed.cssとの紐付け-->
+<link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (min-width:376px)">
+<link href="{% static "appcss/dressed.css" %}" rel="stylesheet" type="text/css" media="screen and (max-width:375px)">
+
+<div id="main_frame">
+    <div id="sub_frame">
+        <div id="sub_left">
+            <div id="user_img_box">
+                <img src="" alt="no_img" id="user_img" class="hide_flag">
             </div>
-            <div id="black_pocket">
-                <div id="black_mask" class="hide_flag">
-                </div>
+            <div class="icon">
+                <img src="{% static "app_images/dress_img/human.png" %}" alt="no_img" id="human_icon">
             </div>
-            <div id="setting_frame"></div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script>
-            click_cut_url = '{% url "DressApp:click_cut" %}';
-            ajax_file_url = '{% url "DressApp:ajax_file_send" %}';//これはjsファイルの読み込みでdjangoのurlタグが解釈されないためあらかじめ変数として作っておく
-            select_clothes_url = '{% url "DressApp:select_clothes" %}';
-        </script>
-        <script src="{% static "app_script/dressed.js" %}"></script>
-    </body>
-</html>
+        <div id="sub_right">
+            <div class="model"></div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_10.png" %}" alt="no_img" id="1.model_10" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_9.png" %}" alt="no_img" id="1.model_9" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_8.png" %}" alt="no_img" id="1.model_8" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_7.png" %}" alt="no_img" id="1.model_7" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_6.png" %}" alt="no_img" id="1.model_6" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_5.png" %}" alt="no_img" id="1.model_5" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_4.png" %}" alt="no_img" id="1.model_4" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_2.png" %}" alt="no_img" id="1.model_2" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_3.png" %}" alt="no_img" id="1.model_3" class="model_img">
+            </div>
+            <div class="model_have">
+                <img src="{% static "app_images/dress_img/model_0.jpeg" %}" alt="no_img" id="1.model_0" class="model_img">
+            </div>
+            <div class="model_have" id="down">
+                <img src="{% static "app_images/dress_img/model_1.png" %}" alt="no_img" id="1.model_1" class="model_img">
+            </div>
+        </div>
+    </div>
+    <div id="asset_form" class="hide_flag">
+        <div class="avater_icon">
+            <img src="{% static "app_images/dress_img/human_plus.png" %}" id="human_plus_icon">
+            <div class="avater_text">
+                New avater
+            </div>
+        </div>
+        <div class="avater_icon">
+            <img src="{% static "app_images/dress_img/human_already.png" %}" alt="no_img" id="human_already_icon">
+            <div class="avater_text">
+                Avaters
+            </div>
+        </div>
+
+        <div id="file_form" class="none_flag">
+            <form id="ajax-file-send" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>
+                    <label for="id_human_name">Human name:</label>
+                    <input type="text" name="human_name" maxlength="100" required="" id="id_human_name">
+                </p>
+                <p>
+                    <label for="id_height">Height:</label>
+                    <input type="number" name="height" value="0" required="" id="id_height"></p>
+                <p>
+                    <label for="id_picture">Picture:</label>
+                    <input type="file" name="picture" accept="image/*" id="id_picture"></p>
+                <!--<p>ファイル：<input type="file" id="uploadfile" name="uploadfile" value=""></p>-->
+                <p><input type="submit" name="submit"></p>
+            </form>
+            <!--
+            <form enctype="multipart/form-data" action="{% url 'DressApp:upload' %}" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Upload" id="f_b">
+            </form>-->
+            <!--
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+                {{ form.avator }}{{ form.avator.errors }}
+                <button type="submit" class="btn">Register</button>
+            </form>-->
+                 
+            <div id="file_look">
+
+            </div>
+            <button class="kyanseru">キャンセル</button>
+        </div>
+        <div id="avater_select_form" class="none_flag">
+            <div id="select_img_contents">
+                {% for image in images %}
+                <div class="cut_img_contant">
+                    <!--<img class="cut_img" src='{{ MEDIA_URL }}{{image.picture}}'>-->
+                    <img class="cut_img" src='{{image.cut_image_path}}' id='{{image.id}}' onclick="click_cut_img(this)">
+                    <h2 class="cut_img_name">{{ image.human_name }}</h2>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="kyanseru">キャンセル</button>
+        </div>
+    </div>
+    <div id="black_pocket">
+        <div id="black_mask" class="hide_flag">
+        </div>
+    </div>
+    <div id="load_pocket">
+        <div class="load_form none_flag">
+            <img src="{% static "app_images/dress_img/hourglass.gif" %}" alt="no_img">
+        </div>
+        <div class="load_form none_flag">
+            <img src="{% static "app_images/dress_img/counter.gif" %}" alt="no_img">
+        </div>
+    </div>
+    <div id="setting_frame"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    click_cut_url = '{% url "DressApp:click_cut" %}';
+    ajax_file_url = '{% url "DressApp:ajax_file_send" %}';//これはjsファイルの読み込みでdjangoのurlタグが解釈されないためあらかじめ変数として作っておく
+    select_clothes_url = '{% url "DressApp:select_clothes" %}';
+</script>
+<script src="{% static "app_script/dressed.js" %}"></script>
+{% endblock %}

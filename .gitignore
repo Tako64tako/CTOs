@@ -142,10 +142,10 @@ src/DressApp/dress_lib/images/*/*.png
 src/DressApp/dress_lib/materials/*/*.png
 src/DressApp/dress_lib/images/*/*.JPG
 src/DressApp/dress_lib/materials/*/*.JPG
-media/human_img/*.png
-media/human_img/*.JPG
-media/dress_images/*.png
-media/cut_images/*.png
+src/media/human_img/*.png
+src/media/human_img/*.JPG
+src/media/dress_images/*.png
+src/media/cut_images/*.png
 
 # json
 src/DressApp/dress_lib/materials/*/*.json
