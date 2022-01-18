@@ -46,6 +46,8 @@ def exif_transpose(img):
             img = img.rotate(90, expand=True)
 
     return img
+
+# exif情報を持つ画像なら、exifに従って画像を回転補正したexif情報を持たない画像を生成する
 def load_image_file(file, mode='RGB'):#i画像ををexifを考慮してPILで読み込み
     # Load the image with PIL
     img = Image.open(file)
@@ -63,23 +65,17 @@ def load_image_file(file, mode='RGB'):#i画像ををexifを考慮してPILで読
             img = exif_transpose(img)
 
         #exif情報を消す
-        print(4)
         data = img.getdata()
-        print(5)
         mode = img.mode
-        print(6)
         size = img.size
-        print(7)
         img = Image.new(mode, size)
-        print(8)
         img.putdata(data)
-        print(9)
     except AttributeError:
         print("not_exif")
 
     return img
 
-#圧縮する(pngのみ)モジュール
+#圧縮するモジュール
 def imgEncodeDecode(in_imgs, ch, quality=5):
     """
     入力された画像リストを圧縮する
@@ -103,131 +99,69 @@ def imgEncodeDecode(in_imgs, ch, quality=5):
 
     return out_imgs
 
-def exifcut_compression_risize(cut_mode="haikei",filename="",input_img_path=""):
-    print(0)
-    #dir_name = "./DressApp/dress_lib/images/input_imgs/"
-    output_dir = "./DressApp/dress_lib/images/temporary_imgs/"
-    output_dir = "./DressApp/dress_lib/images/via/"#臨時追加
-    #filename = "IMG_0137.png"
-    print(1)
+# リサイズして、フォーマット変換して、exif情報の処理をし、圧縮する
+def exifcut_compression_risize(filename="",input_img_path="",output_dir=""):
 
-    #リサイズして画像の大きさを小さくする
-    #hito = cv2.imread(output_dir+filename+".jpg")
+    # リサイズして画像の大きさを小さくする
     img = cv2.imread(input_img_path)
-    img_format = filename.split('.')[1]
-
-    h,w,_ = img.shape#cv2で読み込むとexif情報を解釈した画像配列作られるから、hとwが正常？
+    img_format = filename.split('.')[1]#入力された画像のフォーマットを得る
+    h,w,_ = img.shape#cv2で読み込むとexif情報を解釈した画像配列が作られるから、hとwが正常？
     print("h="+str(h))
     print("w="+str(w))
-    scale_factor = 0
+    scale_factor = 0#リサイズ倍率
+    #もしhが800より大きいならばリサイズする
     if h > 800:
         print("do resize")
         print(800 / h)
         scale_factor = int(800 / h * 100) / 100
         print("scale_facter"+str(scale_factor))
-        print(2)
         img = cv2.resize(img,dsize=None, fx=scale_factor, fy=scale_factor)
     h,w,_ = img.shape
     print("h="+str(h))
     print("w="+str(w))
-    print(3)
+    #cv2.imwrite(output_dir+"risize.png",img)
 
-    if img_format == "jpg":# もしjpg画像ならpngに変換
+    
+    # 画像のフォーマットをpngにする
+    print("img_format="+str(img_format))
+    if img_format == "jpg" or img_format == "JPG":# もしjpg画像ならpngに変換
         print("this img is jpg")
         filename  = filename.split('.')[0]+".png"
+        #cv2.imwrite(output_dir+"format_change.png", img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 1])
         cv2.imwrite(output_dir+filename, img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 1])
-    else:
+    elif img_format == "png":
         print("this img is png")
         cv2.imwrite(output_dir+filename, img)#保存
+        #cv2.imwrite(output_dir+"format_change.png", img)
+    else:
+        print("this format isn't supported")
 
-    # exif情報をもとに画像を回転、exif情報削除した画像を生成
+
+    # exif情報をもとに画像を回転、exif情報を削除した画像を生成
     img = load_image_file(output_dir+filename)#Pillowで開き、exif情報から回転させたものを格納し、exif情報を消した画像を生成
-    #img.save("./resize_exif/"+filename)#保存
+    #img.save(output_dir+"exifcut.png")#保存
+
+
+    # 画像のデータサイズが500kBより大きいなら圧縮しておく
     img_size =os.path.getsize(output_dir+filename)
     print("img_size="+str(img_size))
-    print("img_format="+str(img_format))
-
     if img_size > 500000:
         print("do compression")
         #jpgにして圧縮する
         img = np.array(img)
-        print(10)
         img = img[...,::-1] #BGR->RGB
-        print(11)
         _,_,ch = img.shape
-        print(12)
         img = imgEncodeDecode([img], ch, 40)#jpg圧縮
-        print(13)
-        #cv2.imwrite(puress_dir+filename, img[0])#保存
+        #cv2.imwrite(output_dir+"puress.png", img[0])#保存
         img = img[0]
 
-        output_dir = "./DressApp/dress_lib/images/via/"#臨時追加
+        #pngで保存
         cv2.imwrite(output_dir+filename, img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 9])#確認保存用
-        '''#pngで保存これはalphaのため -> 推論の際jpgでもpngにされるからjpgでもいい
-        output_dir = "./DressApp/dress_lib/images/via/"#臨時追加
-        if cut_mode == "haikei":
-            cv2.imwrite(output_dir+filename, img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 9])#確認保存用
-        else:
-            cv2.imwrite(output_dir+filename+'_risize.jpg', img)'''
     else:# 画像のデータサイズが小さいとき、圧縮しない
         print("don't compression")
-        output_dir = "./DressApp/dress_lib/images/via/"#臨時追加
+        #pngで保存
         img.save(output_dir+filename)#確認保存用
     
-    print(14)
     del img
-    print(15)
     gc.collect()
-    print(16)
-    return(output_dir,filename)
-    '''img = load_image_file(input_img_path)#Pillowで開き、exif情報から回転させたものを格納
-
-    #exif情報を消す
-    print(2)
-    data = img.getdata()
-    print(3)
-    mode = img.mode
-    print(4)
-    size = img.size
-    print(5)
-    img = Image.new(mode, size)
-    print(6)
-    img.putdata(data)
-    print(7)
-
-    #jpgにして圧縮する
-    img = np.array(img)
-    print(8)
-    img = img[...,::-1] #BGR->RGB
-    print(9)
-    _,_,ch = img.shape
-    print(10)
-    img = imgEncodeDecode([img], ch, 40)#jpg圧縮
-    print(11)
-    #cv2.imwrite(output_dir+filename+'.jpg', img[0])#保存
-
-    #リサイズして画像の大きさを小さくする
-    #hito = cv2.imread(output_dir+filename+".jpg")
-    h,w,_ = img[0].shape
-    print(12)
-    img = cv2.resize(img[0],dsize=None, fx=0.2, fy=0.2)
-    print(13)
-
-    #pngで保存これはalphaのため -> 推論の際jpgでもpngにされるからjpgでもいい
-    output_dir = "./DressApp/dress_lib/images/via/"#臨時追加
-    if cut_mode == "haikei":
-        cv2.imwrite(output_dir+filename, img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 9])#確認保存用
-    else:
-        cv2.imwrite(output_dir+filename+'_risize.jpg', img)
-    print(14)
-    del img
-    print(15)
-    gc.collect()
-    print(16)
-    return(output_dir)'''
-
-#HEIC形式変更
-#Exif情報を消す
-#画像を圧縮する
-#リサイズして元のサイズにする(画像を粗くする)
-#画像のwidthとheightを小さくする(リサイズ)○
+    return(filename)

@@ -30,10 +30,10 @@ $.ajaxSetup({
     }
 });
 
-
-const dress_back = document.getElementById("dres_back");
+/*
+const dress_back = document.getElementById("dress_back");
 let dress_back_x = dress_back.clientWidth;
-console.log(dress_back_x);
+console.log(dress_back_x);*/
 const sub_right = document.getElementById("sub_right");
 const sub_left = document.getElementById("sub_left");
 let sub_left_x = sub_left.clientWidth;
@@ -184,7 +184,9 @@ function fileChange(ev) {
 }
 file_road_form.addEventListener("change", fileChange, false);
 
-
+const load_forms = document.getElementsByClassName("load_form");
+const hourglass = load_forms[0]
+const counter = load_forms[1]
 const cambus_form = document.getElementById("cambus_form")
 const cambus = document.getElementById("cambus")
 //画像ファイルを選択し、次へボタンを押したときajaxで画像ファイルを格納したDataFormを送信する関数を登録
@@ -195,6 +197,10 @@ $('#ajax-file-send').on('submit', function(e) {
     for (let value of fd.entries()) {
         console.log(value);
     }
+    black_mask.removeEventListener("mousedown",black_mask_hide);
+    black_mask.className = "black_layer_9"//maskをつける
+    hourglass.classList.remove("none_flag");//砂時計ロード動画を見せる
+
     $.ajax({
         'url': ajax_file_url,
         'type': 'post',
@@ -225,10 +231,24 @@ $('#ajax-file-send').on('submit', function(e) {
         file_form.className = "none_flag"
 
         black_mask.className = "black_layer_4";
+        black_mask.addEventListener("mousedown",black_mask_hide);
         human_icon_flag = 1
 
         avater_select_form.className = "visible_flag"
         asset_form.className = "hide_flag"
+
+        hourglass.classList.add("none_flag");
+    }).fail(function(data) {
+        file_form.className = "none_flag"
+
+        black_mask.className = "black_layer_4";
+        black_mask.addEventListener("mousedown",black_mask_hide);
+        human_icon_flag = 1
+
+        avater_select_form.className = "visible_flag"
+        asset_form.className = "hide_flag"
+
+        hourglass.classList.add("none_flag");
     });
 });
 
@@ -238,6 +258,11 @@ const model_have = document.getElementsByClassName("model_have")
 Array.prototype.forEach.call(model_have, function(element) {
     element.addEventListener("click",function(e){
         const start = Date.now();
+
+        black_mask.removeEventListener("mousedown",black_mask_hide);
+        black_mask.className = "black_layer_9"//maskをつける
+        counter.classList.remove("none_flag");//蓄積ロード動画を見せる
+
         model_ele = e.children
         //console.dir(e.target)
         //console.dir(this)
@@ -271,9 +296,21 @@ Array.prototype.forEach.call(model_have, function(element) {
                 //画像の再読み込みにおけるダミー引数案 この方法でないとブラウザ内のキャッシュにある画像を参照してしまい画像の再読み込みをしない
                 co++;
                 user_img.src = response.result_img_path+"?"+co;
+
+                black_mask.addEventListener("mousedown",black_mask_hide);
+                black_mask.className = "hide_flag"//maskを消す
+                counter.classList.add("none_flag");//蓄積ロード動画を消す
+            }).fail(function(data) {
+                console.log("error!")
+                black_mask.addEventListener("mousedown",black_mask_hide);
+                black_mask.className = "hide_flag"//maskを消す
+                counter.classList.add("none_flag");//蓄積ロード動画を消す
             });
         }else{
             console.log("use_id is null")
+            black_mask.addEventListener("mousedown",black_mask_hide);
+            black_mask.className = "hide_flag"//maskを消す
+            counter.classList.add("none_flag");//蓄積ロード動画を消す
         }
     });
 });

@@ -1,21 +1,27 @@
 body{
-    margin:0px
+    margin:0px;
+    height:712px;
+    overflow:hidden;
 }
+main{
+    height:712px;
+}
+
 #main_frame{
-    height:796px;
+    height:712px;
     min-width:600px;
-    background-color: black;
+    /*background-color: black;*/
     overflow: hidden;
 }
 #sub_frame{
-    height:796px;
+    height:712px;
     width:100%;
 }
 #sub_left{
     display:inline-block;
-    height:796px;
-    width:66%;
-    max-width:796px;
+    height:712px;
+    width:62%;
+    max-width:712px;
     overflow:hidden;
     /*background-image:url("../img/dress2.jpeg");
     background-size: cover;*/
@@ -24,12 +30,12 @@ body{
     position:relative;
     left:-1px;
     display:inline-block;
-    height:796px;
-    width:calc(33% + 0px);
+    height:712px;
+    width:calc(37% + 0px);
     overflow: scroll;
     vertical-align: top;
 }
-#dres_back{
+#dress_back{
     position:relative;
     top:0px;
     left:calc(-398px + 100% / 2);
@@ -41,7 +47,8 @@ body{
     z-index:2;
     height:90%;
     width:100%;
-    top:-796px;
+    /*top:-712px;*/
+    top:50px;
     text-align: center;
     display: flex;
 	align-items: center;
@@ -70,12 +77,13 @@ body{
 .icon{
     position:relative;
     z-index:3;
-    top:-1493px;
-    left:calc(-68px + 100%);
+    /*top:-1330px;*/
+    top:-618px;
+    left:calc(-85px + 100%);
 
     width:60px;
-    height:53px;
-    padding-top:7px;
+    height:55px;
+    padding-top:5px;
     overflow: hidden;
 
     /*border: 1px solid black;*/
@@ -104,7 +112,7 @@ body{
 
     height:300px;
     width:600px;
-    padding-top: 50px;
+    padding-top:25px;
 
     border-radius: 30px;
     background-color: white;
@@ -128,10 +136,10 @@ body{
 #file_form{
     position:relative;
     z-index:6;
-    top:-540px;
+    top:-460px;
     left:calc(50% - 300px);
 
-    height:700px;
+    height:680px;
     width:600px;
     padding: 15px 15px 15px 15px;
 
@@ -144,7 +152,7 @@ body{
 #file_look{
     text-align: center;
     width:100%;
-    height: 500px
+    height: 450px;
 }
 .road_img{
     height:100%;
@@ -156,7 +164,7 @@ body{
     top:-340px;
     left:calc(50% - 315px);
 
-    height:350px;
+    height:370px;
     width:600px;
     padding: 15px 15px 15px 15px;
 
@@ -164,7 +172,7 @@ body{
 }
 #select_img_contents{
     height:320px;
-    width:calc(100% - 30px);
+    width:calc(100% - 0px);
     padding-left:15px;
     padding-right:15px;
     overflow-x: scroll;
@@ -172,7 +180,7 @@ body{
 .cut_img_contant{
     display: inline-block;
     height:100%;
-    width:270px;
+    width:267px;
     text-align: center;
 }
 .cut_img{
@@ -214,7 +222,7 @@ body{
 }
 #black_mask{
     position:relative;
-    top:-1148px;
+    top:-1090px;
     height:796px;
     width:100%;
     background-color: black;
@@ -222,4 +230,26 @@ body{
 }
 .black_layer_4{
     z-index:4;
+}
+.black_layer_9{
+    z-index:9;
+}
+
+#load_pocket{
+    height:0px;
+    width:100%;
+}
+.load_form{
+    position:relative;
+    z-index:10;
+    top:-860px;
+    left:calc(50% - 150px);
+
+    height:300px;
+    width:300px;
+    padding-top:50px;
+
+    border-radius: 30px;
+    background-color: white;
+    text-align:center;
 }

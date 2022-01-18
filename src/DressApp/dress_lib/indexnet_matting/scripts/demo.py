@@ -4,14 +4,11 @@ import os
 import cv2 as cv
 from time import time
 from PIL import Image
-from PIL import ImageOps
 from collections import OrderedDict
 
 import torch
 import torch.nn as nn
-from .hlmobilenetv2 import hlmobilenetv2
-
-import matplotlib.pyplot as plt
+from hlmobilenetv2 import hlmobilenetv2
 
 # ignore warnings
 import warnings
@@ -22,9 +19,8 @@ IMG_MEAN = np.array([0.485, 0.456, 0.406, 0]).reshape((1, 1, 4))
 IMG_STD = np.array([0.229, 0.224, 0.225, 1]).reshape((1, 1, 4))
 
 STRIDE = 32
-RESTORE_FROM = './DressApp/dress_lib/indexnet_matting/pretrained/indexnet_matting.pth.tar'
-#RESULT_DIR = './DressApp/dress_lib/images/mattes'
-RESULT_DIR = "./DressApp/dress_lib/images/via/"#臨時追加
+RESTORE_FROM = './pretrained/indexnet_matting.pth.tar'
+RESULT_DIR = './examples/mattes'
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -65,7 +61,6 @@ net.eval()
 
 def read_image(x):
     img_arr = np.array(Image.open(x))
-    print(img_arr.shape)
     return img_arr
 
 def image_alignment(x, output_stride, odd=False):
@@ -86,16 +81,10 @@ def image_alignment(x, output_stride, odd=False):
 
     return new_x
 
-def inference(filename, image, trimap):
+def inference(image_path, trimap_path):
     with torch.no_grad():
-        #image, trimap = read_image(image_path), read_image(trimap_path)
+        image, trimap = read_image(image_path), read_image(trimap_path)
         trimap = np.expand_dims(trimap, axis=2)
-        #print(image[0][0])
-        #print(trimap[0][0])
-        #plt.imshow(image)
-        #plt.show()
-        #plt.imshow(trimap)
-        #plt.show()
         image = np.concatenate((image, trimap), axis=2)
         
         h, w = image.shape[:2]
@@ -110,7 +99,6 @@ def inference(filename, image, trimap):
         
         # inference
         start = time()
-        print(2)
         outputs = net(inputs)
         end = time()
 
@@ -121,59 +109,28 @@ def inference(filename, image, trimap):
         mask = np.equal(trimap, 128).astype(np.float32)
         alpha = (1 - mask) * trimap + mask * alpha
 
-        #_, image_name = os.path.split(image_path)
-        #Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, filename))#確認保存用
+        _, image_name = os.path.split(image_path)
+        Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, image_name))
         # Image.fromarray(alpha.astype(np.uint8)).show()
 
         running_frame_rate = 1 * float(1 / (end - start)) # batch_size = 1
         print('framerate: {0:.2f}Hz'.format(running_frame_rate))
 
-        print(type(alpha.astype(np.uint8)))
-        return(alpha.astype(np.uint8))
 
-
-def infer(blur_img,trimap_img,filename):
+if __name__ == "__main__":
     image_path = [
-        #'./examples/images/beach-747750_1280_2.png',
-        #'./examples/images/boy-1518482_1920_9.png',
-        #'./examples/images/light-bulb-1104515_1280_3.png',
-        #'./examples/images/spring-289527_1920_15.png',
-        #'./examples/images/wedding-dresses-1486260_1280_3.png',
-        #"./examples/images/kei.jpg",
-        #"./examples/images/man.png",
-        #"./examples/images/data1.jpg",
-        #"./examples/images/Hito_risize.jpg",
-        #"./examples/images/masut.png",
-        #"./examples/images/bler_kei.png",
-        #"./DressApp/dress_lib/indexnet_matting/examples/images/bler_Hito_risize.png",
-        "./DressApp/dress_lib/images/images/bler_IMG_0137_risize.png",
-        #"./DressApp/dress_lib/indexnet_matting/examples/images/bler_Hito_risize_risize.png",
-        #"./examples/images/Hito.png"
+        './examples/images/beach-747750_1280_2.png',
+        './examples/images/boy-1518482_1920_9.png',
+        './examples/images/light-bulb-1104515_1280_3.png',
+        './examples/images/spring-289527_1920_15.png',
+        './examples/images/wedding-dresses-1486260_1280_3.png'
     ]
     trimap_path = [
-        #'./examples/trimaps/beach-747750_1280_2.png',
-        #'./examples/trimaps/boy-1518482_1920_9.png',
-        #'./examples/trimaps/light-bulb-1104515_1280_3.png',
-        #'./examples/trimaps/spring-289527_1920_15.png',
-        #'./examples/trimaps/wedding-dresses-1486260_1280_3.png',
-        #"./examples/trimaps/kei.jpg",
-        #"./examples/trimaps/man.png",
-        #"./examples/trimaps/data1.jpg",
-        #"./examples/trimaps/Hito_risize.jpg",
-        #"./examples/trimaps/masut.png",
-        #"./examples/trimaps/bler_kei.png",
-        #"./DressApp/dress_lib/indexnet_matting/examples/trimaps/bler_Hito_risize.png",
-        "./DressApp/dress_lib/images/trimaps/bler_IMG_0137_risize.png",
-        #"./DressApp/dress_lib/indexnet_matting/examples/trimaps/bler_Hito_risize_risize.png",
-        #"./examples/trimaps/Hito.png"
+        './examples/trimaps/beach-747750_1280_2.png',
+        './examples/trimaps/boy-1518482_1920_9.png',
+        './examples/trimaps/light-bulb-1104515_1280_3.png',
+        './examples/trimaps/spring-289527_1920_15.png',
+        './examples/trimaps/wedding-dresses-1486260_1280_3.png'
     ]
-    print(1)
-    imgs = [blur_img]
-    trimaps = [trimap_img]
-    filenames = [filename]
-    #for image, trimap in zip(image_path, trimap_path):
-    for filename, image, trimap in zip(filenames, imgs, trimaps):
-        matte = inference(filename, image, trimap)
-        print("last")
-    return(matte)
-
+    for image, trimap in zip(image_path, trimap_path):
+        inference(image, trimap)

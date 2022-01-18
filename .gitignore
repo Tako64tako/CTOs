@@ -14,7 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
@@ -129,3 +129,26 @@ dmypy.json
 .pyre/
 
 .DS_Store
+
+# DressApp
+# Learning model
+src/DressApp/dress_lib/pytorch_openpose/model/*.pth
+src/DressApp/dress_lib/semantic_segmentation/models/*.pth
+src/DressApp/dress_lib/semantic_segmentation/models/checkpoints/*.pth
+src/DressApp/dress_lib/simple_bodypix_python/bodypix_resnet50_float_model-stride16/
+
+# img
+src/DressApp/dress_lib/images/*/*.png
+src/DressApp/dress_lib/materials/*/*.png
+src/DressApp/dress_lib/images/*/*.JPG
+src/DressApp/dress_lib/materials/*/*.JPG
+src/media/human_img/*.png
+src/media/human_img/*.JPG
+src/media/dress_images/*.png
+src/media/cut_images/*.png
+
+# json
+src/DressApp/dress_lib/materials/*/*.json
+
+# program
+src/test.py

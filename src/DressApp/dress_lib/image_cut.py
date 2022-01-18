@@ -1,39 +1,53 @@
 from .semantic_segmentation import exif_cut
-#segmかhaikeiどちらか一方だけimportする 両方importするとoutofmemoryエラーになる
-#from . import segm
 from .semantic_segmentation import haikei
-from .indexnet_matting.scripts import demo
+from .indexnet_matting.scripts import image_matting
 from .indexnet_matting.scripts import cut
-from .simple_bodypix_python_master import body_part_segm
-from .pytorch_openpose_master import pose_check
+from .simple_bodypix_python import body_part_segm
+from .pytorch_openpose import pose_check
 
 import time
 import json
 import os
 import cv2
+import numpy as np
 
 def image_cut(filename,input_img_path,height):
     imgProc_start = time.time()
-    #exif_cut.exifcut_compression_risize("segm")#haikeiを実行するならコメントアウト
-    #segm.cutting_out()#haikeiを実行するならコメントアウト
-    dir_path,filename = exif_cut.exifcut_compression_risize("haikei",filename,input_img_path)#segmを実行するならコメントアウト
-    blur_img,trimap,image_path = haikei.cutting_out(dir_path,filename)#segmを実行するならコメントアウト
+    
+    # リサイズして、フォーマット変換して、exif情報の処理をし、圧縮してdir_pathに保存する
+    dir_path = "./DressApp/dress_lib/images/temporary_imgs/"
+    filename = exif_cut.exifcut_compression_risize(filename,input_img_path,dir_path)
+
+    # セマンティックセグメンテーション等の処理を行い、trimapとblur_imgを返す
+    blur_img,trimap = haikei.cutting_out(dir_path,filename)
     #trimaps_dir = "./DressApp/dress_lib/images/trimaps/"
-    #images_dir = "./DressApp/dress_lib/images/images/"
+    #images_dir = "./DressApp/dress_lib/images/blur_images/"
     #cv2.imwrite(images_dir+filename,blur_img)#確認保存用
     #cv2.imwrite(trimaps_dir+filename,trimap)#確認保存用
-    matte = demo.infer(blur_img,trimap,filename)
-    #RESULT_DIR = './DressApp/dress_lib/images/mattes'
-    #RESULT_DIR = "./DressApp/dress_lib/images/via/"#臨時追加
-    #Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, filename))#確認保存用
-    alpha_img = cut.cutting(blur_img,matte,filename)
-    #cv2.imwrite("./DressApp/dress_lib/images/via/"+filename,alpha_img)#確認保存用
 
+    # indexnet_mattingで背景を綺麗に切り抜りとったマスクを得る
+    matte = image_matting.infer(blur_img,trimap,filename)
+    #RESULT_DIR = './DressApp/dress_lib/images/mattes'
+    #Image.fromarray(alpha.astype(np.uint8)).save(os.path.join(RESULT_DIR, filename))#確認保存用
+
+    # matteをもとにblur_imgの背景を切り取ることで背景削除人物画像を得る
+    alpha_img = cut.cutting(blur_img,matte,filename)
+    #cut_dir='./DressApp/dress_lib/images/cut_images/'
+    #cv2.imwrite(cut_dir+filename,alpha_img)#確認保存用
+
+    # alpha_imgとheightから人物の身長を合わせてリサイズした画像を生成し、bodypixで人物の部位ごとにセグメンテーションした画像を得る
     actual_img,human_segm = body_part_segm.segm_run(alpha_img,height)
     #outdirPath = "./DressApp/dress_lib/images/part_segm_images/"
-    #cv2.imwrite(outdirPath+file_name,human_segm)#確認保存用
-    #cv2.imwrite("./DressApp/dress_lib/images/cut_images/",actualimg)
-    candidate = pose_check.pose_esti(actual_img,filename)
+    #height_resize_dir = "./DressApp/dress_lib/images/height_resize_images/"
+    #cv2.imwrite(outdirPath+filename,human_segm)#確認保存用
+    #cv2.imwrite(height_resize_dir+filename,actual_img)
+
+    # openposeで人物の骨格情報を得る
+    candidate,canvas = pose_check.pose_esti(actual_img,filename)
+    #skeleton_dir = "./DressApp/dress_lib/images/skeleton_images/"
+    #cv2.imwrite(skeleton_dir+filename,canvas)#確認保存用
+
+    # 骨格情報をJSONデータにする
     print(type(candidate))
     print(type(candidate[0]))
     print(type(candidate[0][0]))
